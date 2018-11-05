@@ -10,14 +10,17 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                      <router-link to="/" :event="disabled ? '' : 'click'" class="nav-link" disabled>خانه</router-link>
+                      <router-link to="/" class="nav-link">خانه</router-link>
                     <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
                 </li>
                 <li class="nav-item">
-                      <router-link to="/" :event="disabled ? '' : 'click'" class="nav-link" disabled>صدور قبض</router-link>
+                      <router-link to="/" class="nav-link">صدور قبض</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/" :event="disabled ? '' : 'click'" class="nav-link" disabled>پرداخت قبض</router-link>
+                    <router-link to="/" class="nav-link">پرداخت قبض</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/register" class="nav-link">ثبت</router-link>
                 </li>
                 </ul>
 
@@ -30,7 +33,12 @@ export default {
     name: 'Menu',
 }
 </script>
-<style>
+<style scoped>
+
+.navbar {
+    direction: rtl;
+}
+
 .logo {
     width: 50px;
 }
@@ -38,4 +46,10 @@ export default {
     background-color: #f7f7f7;
     border-bottom: 1px solid #cacaca;
 }
+
+.mr-auto, .mx-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
 </style>
