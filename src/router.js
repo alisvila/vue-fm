@@ -5,6 +5,10 @@ import RegisterForm from './views/RegisterForm.vue'
 import singleOrder from './views/order.vue'
 import Login from './views/Login.vue'
 import Register from './views/register.vue'
+import Apps from './views/pannel/Apps.vue'
+import NewService from './views/pannel/NewService.vue'
+import PannelIndex from './views/pannel/index.vue'
+import Documents from './views/pannel/Document.vue'
 
 
 
@@ -46,5 +50,26 @@ export default new Router({
       name: 'register',
       component: Register
     },
+    {
+      path: '/pannel/apps',
+      name: 'apps',
+      component: Apps
+    },
+    {
+      path: '/pannel/new',
+      name: 'NewService',
+      component: NewService
+    },
+    {
+      path: '/pannel',
+      name: 'PannelIndex',
+      component: PannelIndex
+    },
+    {
+      path: '/pannel/documents',
+      name: 'Documents',
+      component: Documents
+    },
+    
   ]
 })

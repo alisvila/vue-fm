@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <Menu />
-
     <router-view/>
   </div>
 </template>
 
 <script>
-import Menu from '@/components/menu.vue'
+import SideMenu from '@/components/SideMenu.vue'
+
 
 export default {
   components: {
-    Menu
+    SideMenu
   } 
 }
 
