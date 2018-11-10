@@ -29,14 +29,6 @@ export default {
 </script>
 
 <style>
-@font-face {              
-     font-family: sabin;
-     src: url('../assets/fonts/Yekan.ttf');
-}
-
-h1, h2, h3, p, span {
-  font-family: sabin
-}
 
 .home {
   position: absolute;

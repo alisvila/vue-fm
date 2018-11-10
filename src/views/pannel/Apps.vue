@@ -21,10 +21,6 @@ export default {
 
 <style>
 
-h1, h2, h3, p, span {
-  font-family: sabin
-}
-
 .home {
   position: absolute;
   top: 35%;

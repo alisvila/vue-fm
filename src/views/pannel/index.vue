@@ -8,19 +8,11 @@
     <div class="row">
 
         <div class="col-lg-4 col-sm-12 col-md-6">
-            <card msg="filan o bisar"/>
+            <card link="/pannel/new" status="در حال بررسی" :image="require('@/assets/logo.png')" name="جدید"/>
         </div>
+
         <div class="col-lg-4 col-sm-12 col-md-6">
-            <card msg="filan o bisar"/>
-        </div>
-        <div class="col-lg-4 col-sm-12 col-md-6">
-            <card msg="filan o bisar"/>
-        </div>
-        <div class="col-lg-4 col-sm-12 col-md-6">
-            <card msg="filan o bisar"/>
-        </div>
-        <div class="col-lg-4 col-sm-12 col-md-6">
-            <card msg="filan o bisar"/>
+            <card link="/pannel/new" status="افزودن برنامه جدید" :image="require('@/assets/finno.png')" name="جدید" new="false"/>
         </div>
     </div>
 
@@ -58,7 +50,7 @@ h1, h2, h3, p, span {
 }
 
 .pannel-home {
-    padding: 80px 215px 0 10px;
+    padding: 80px 225px 0 10px;
     direction: rtl;
     margin: 0;
 }

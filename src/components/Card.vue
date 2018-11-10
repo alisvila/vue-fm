@@ -4,15 +4,17 @@
 <div class="card wrapper">
 <div class="client panel panel-default text-center approved" data="ffilan" status="approved">
     <div class="panel-heading">
-        <h6>فیلان</h6>
-    </div><a href="/pannel/new">
-        <div class="logo approved"><img src="@/assets/logo.png"></div>
-        <div class="approved-icone"><img src="@/assets/checked.png">
+        <h6>{{name}}</h6>
+    </div>
+    <router-link :to="link" class="nav-link">
+        <div class="logo approved"><img :src="image"></div>
+        </router-link>
+        <p>{{status}}</p>
+        <div class="approved-icone">
         <i class="fa fa-trash-o"></i>
-        <button class="btn btn-danger btn-small confirm hidden"
-                data-client="ffilan">حذف شود؟</button>
+        <a href="/pannel/delte" class="btn btn-finno btn-small confirm hidden"
+                data-client="ffilan">حذف شود؟</a>
         </div>
-    </a>
 </div>
 </div>
 
@@ -22,9 +24,11 @@
 export default {
   name: 'card',
   props: {
-    msg: String,
-    type: String
-  }
+    status: String,
+    image: String,
+    link: String,
+    name: String
+  },
 }
 </script>
 
@@ -34,12 +38,18 @@ export default {
   border: none;
 }
 .card h6 {
-  background-color: #d6d6d6;
+  background-color: #92ebec;
   padding: 15px;
+  color: #616161;
 }
 
 .card img {
   width: 75px;
   margin: 4px;
 }
+
+.approved-icone {
+  padding-bottom: 20px;
+}
+
 </style>

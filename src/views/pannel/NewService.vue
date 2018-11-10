@@ -1,14 +1,18 @@
 <template>
 
   <div class="container-fluid">
+    <TopMenu />
     <SideMenu />
     <div class="pannel-home">
     <div class="wrapper">
 
     <form-wizard @on-complete="onComplete" 
                         shape="tab"
-                        color="#9b59b6">
-        <tab-content title="طلاعات عمومی"
+                        color="#ff9900"
+                        next-button-text="بعدی"
+                        back-button-text="قبلی"
+                        finish-button-text="دخیره">
+        <tab-content title="اطلاعات عمومی"
                     icon="ti-user" :before-change="beforeTabSwitch">
 
         <div class="row">
@@ -137,6 +141,7 @@
 import {FormWizard, TabContent} from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import SideMenu from '@/components/SideMenu.vue'
+import TopMenu from '@/components/TopMenu.vue'
 
 
 export default {
@@ -144,7 +149,8 @@ export default {
     components: {
         FormWizard,
         TabContent,
-        SideMenu
+        SideMenu,
+        TopMenu
         },
     data() {
        return {
@@ -191,7 +197,7 @@ export default {
 <style>
 
 .pannel-home {
-    padding: 80px 215px 0 10px;
+    padding: 80px 225px 0 10px;
     direction: rtl;
     margin: 0;
 }

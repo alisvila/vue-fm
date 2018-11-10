@@ -5,6 +5,7 @@
         <SideMenu />
         <div class="pannel-home">
             <div class="wrapper">
+                
             </div>
         </div>
 
@@ -15,6 +16,5 @@
 
 <script>
 </script>
-
 <style>
 </style>
