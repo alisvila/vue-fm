@@ -6,26 +6,26 @@
             <form class="form-signin">
                 <img class="mb-4 logo" src="../assets/finnoboom.png" alt="">
 
-                <input v-model="fname" type="text" id="inputPassword" class="form-control" placeholder="نام" required>
-                <label for="inputPassword" class="sr-only"></label>
+                <input v-model="fname" type="text" class="form-control" placeholder="نام" required>
+                <label for="" class="sr-only"></label>
 
-                <input v-model="lname" type="text" id="inputPassword" class="form-control" placeholder="نام خوانوادگی" required>
-                <label for="inputPassword" class="sr-only"></label>
+                <input v-model="lname" type="text" class="form-control" placeholder="نام خوانوادگی" required>
+                <label for="" class="sr-only"></label>
 
-                <label for="inputEmail" class="sr-only">آدرس ایمیل</label>
-                <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="آدرس ایمیل" required autofocus>
+                <label for="" class="sr-only">آدرس ایمیل</label>
+                <input v-model="email" type="email" class="form-control" placeholder="آدرس ایمیل" required autofocus>
                 
-                <label for="inputPassword" class="sr-only"></label>
-                <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="کلمه عبور" required>
+                <label for="" class="sr-only"></label>
+                <input v-model="password" type="password" class="form-control" placeholder="کلمه عبور" required>
 
-                <label for="inputPassword" class="sr-only"></label>
-                <input v-model="repassword" type="password" id="inputPassword" class="form-control" placeholder="تکرار کلمه عبور" required>
+                <label for="" class="sr-only"></label>
+                <input v-model="repassword" type="password" class="form-control" placeholder="تکرار کلمه عبور" required>
 
-                <label for="inputPassword" class="sr-only"></label>
-                <input v-model="mobile" type="number" id="inputPassword" class="form-control" placeholder="شماره همراه" required>
+                <label for="" class="sr-only"></label>
+                <input v-model="mobile" type="number" class="form-control" placeholder="شماره همراه" required>
 
-                <label for="inputPassword" class="sr-only"></label>
-                <input v-model="company" type="text" id="inputPassword" class="form-control" placeholder="نام شرکت" required>
+                <label for="" class="sr-only"></label>
+                <input v-model="company" type="text"  class="form-control" placeholder="نام شرکت" required>
 
                 <div class="checkbox mb-3">
                 </div>
@@ -82,12 +82,12 @@ export default {
                 return response;
                 }
             })
-            .then( (response) => {
+            .then( () => {
                 this.alert = true
                 this.type= "alert-success"
                 this.msg = "success"
             })
-            .catch( (error) => {
+            .catch( () => {
                 this.alert = true
                 this.type= "alert-danger"
                 this.msg = "error"
@@ -95,7 +95,7 @@ export default {
 
         }
     }
-}
+};
 
 </script>
 

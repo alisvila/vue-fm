@@ -212,7 +212,7 @@
                     <label>
                         <input class="deposit" 
                                 type="checkbox" 
-                                v-model="privacy" 
+                                v-model="formInput.privacy" 
                                 value="checked">موارد بالا را میپذیرم
                     </label>
                 </div>
@@ -260,6 +260,7 @@ export default {
            webAddress: '',
            callBack: '',
            activityType: '',
+           privacy: ''
          },
         sectedService: [],
         services: allServices,
@@ -286,6 +287,9 @@ export default {
          onComplete: function() {
            alert('Yay. Done!');
          },
+            beforeTabSwitch: function(){
+          return true;
+        },
          validateFirstStep() {
            return new Promise((resolve, reject) => {
              this.$refs.ruleForm.validate((valid) => {

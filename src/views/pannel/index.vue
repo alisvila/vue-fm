@@ -12,7 +12,7 @@
         </div>
 
         <div class="col-lg-4 col-sm-12 col-md-6">
-            <card link="/pannel/new" status="افزودن برنامه جدید" :image="require('@/assets/finno-new.png')" name="جدید" isNew="true"/>
+            <card link="/pannel/new" status="افزودن برنامه جدید" :image="require('@/assets/finno-new.png')" name="جدید" isNew/>
         </div>
     </div>
 

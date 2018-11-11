@@ -25,7 +25,8 @@
 export default {
 
     name: 'login',
-    data: {
+    data() {
+        return {
         apiUrl: 'http://service.sirang.sabinarya.com/api',
         alert: false,
         type: "",
@@ -35,6 +36,7 @@ export default {
         name: "",
         mobile: "",
         email: "",
+        }
     },
     methods: {
         login: function() {
