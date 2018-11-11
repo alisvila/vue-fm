@@ -4,17 +4,17 @@
     <div class="row">
         <div class="login-wrapper">
     <form class="form-signin">
-      <img class="mb-4" src="../assets/logo.png" alt="" width="72" height="72">
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <img class="mb-4 logo" src="../assets/finnoboom.png" alt="">
+      <label for="inputEmail" class="sr-only">آدرس ایمیل</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="آدرس ایمیل" required autofocus>
+      <label for="inputPassword" class="sr-only">روز عبور</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="روز عبور" required>
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me"> مرا به خاطر بسپار
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <a href="/pannel" class="btn btn-lg btn-finno btn-block" >ورود</a>
     </form>
     </div>
     </div>
@@ -115,12 +115,18 @@ export default {
 <style scoped>
 .login-wrapper {
     margin: 19% auto;
-    width: 400px;
-    padding: 25px;
+    width: 445px;
+    padding: 40px;
     border: 1px solid #e6e6e6;
     background-color: #fbfbfb;
+    direction: rtl;
+
 }
 .login-wrapper input {
     margin-bottom: 10px;
+}
+
+.logo {
+    width: 96%;
 }
 </style>

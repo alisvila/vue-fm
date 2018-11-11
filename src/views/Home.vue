@@ -1,39 +1,175 @@
 <template>
-<div>
+  <div>
+    <full-page ref="fullpage" :options="options">
+      <Menu />
+      <div class="section">
+        <div class="">
 
-  <Menu />
+          <div class="middle-content">
+            <img class="logo" src="../assets/finnoboom.png">
+            <h1 class="sub-text">
+              تجلی ایده های پرداخت شما
+            </h1>
+          </div>
+      </div>
+      <div class="sub-logo">
+        <img src="../assets/logo.png">
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">
+          <h1>مشتریان تجاری</h1>
+        </div>
+        <div class="list-logo-customer">
+          <ul>
+              <li>
+                  <a href="http://www.izbank.ir/" class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_4_min.png"
+                          width="57" height="56" alt="بانک ایران زمین">
+                  </a>
+              </li>
+              <li>
+                  <div class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_1_min.png" width="57"
+                          height="56" alt="بانک آینده">
+                  </div>
+              </li>
+              <li>
+                  <div class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_2_min.png" width="57"
+                          height="56" alt="بانک اقتصاد نوین">
+                  </div>
+              </li>
+              <li>
+                  <div class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_5_min.png" width="57"
+                          height="56" alt="بانک انصار">
+                  </div>
+              </li>
+              <li>
+                  <a href="http://www.bank-day.ir/" class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_3_min.png"
+                          width="57" height="56" alt="بانک دی">
+                  </a>
+              </li>
+              <li>
+                  <div class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_6_min.png" width="57"
+                          height="56" alt="نوآوران امین">
+                  </div>
+              </li>
+          </ul>
+        </div>
+      </div>
+      <div class="section">
+        <div class="">
+          <div class="middle-content section-title">
+            <h1 class="section-title">
+              خدمات فینوبوم
+            </h1>
+            
+<ul class="sftc-tb-links">
+    <li class="card">
+        <a href="#tab1" id="#tab1" class="sftc-scroll">
+            <span class="icon-tab">
 
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="سامانه صدور و پرداخت قبوض"/>
+              <img src="../assets/logo.png" >
+            </span>
+            <div class="icon-text">خدمات بانکی</div>
+        </a>
+    </li>
+    <li class="card">
+        <a href="#tab2" id="#tab2" class="sftc-scroll">
+            <span class="icon-tab">
+              <img src="../assets/logo.png" >
+            </span>
+            <div class="icon-text">تسهیلگر عملیات</div>
+        </a>
+    </li>
+    <li class="card">
+        <a href="#tab3" id="#tab3" class="sftc-scroll">
+            <span class="icon-tab">
+              <img src="../assets/logo.png" >
+
+            </span>
+            <div class="icon-text">خدمات بازار سرمایه</div>
+        </a>
+    </li>
+
+</ul>
+
+          </div>
+      </div>
+      </div>
+    </full-page>
   </div>
-</div>
-
 </template>
 
 <script>
-
-import HelloWorld from '@/components/HelloWorld.vue'
-import Apps from '@/views/pannel/Apps.vue'
-import Menu from '@/components/menu.vue'
-
-
-export default {
-  name: 'home',
-  components: {
-    HelloWorld,
-    Apps,
-    Menu
+import Menu from '../components/menu'
+  export default {
+    name: 'home',
+    components: {
+      Menu
+    },
+    data() {
+      return {
+        options: {
+          menu: '#menu',
+          anchors: ['page1', 'page2', 'page3'],
+          sectionsColor: ['#f9f9f9', '#00b7b9', '#ff983f'],
+          anchors:['home', 'partners', 'services'],
+        },
+      }
+    },
+    
   }
-}
 </script>
 
-<style>
-
-.home {
-  position: absolute;
-  top: 35%;
-  left: 35%;
+<style scoped>
+.middle-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 1065px;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.sub-text {
+  margin-top: 30px;
 }
 
+.section-title {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.sub-logo {
+      position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+.sub-logo img {
+  width: 100px;
+}
+.logo {
+  width: 60%;
+}
+
+.card {
+  padding: 30px;
+      width: 185px;
+    height: 185px;
+}
+.card img {
+  width: 99px;
+}
+.icon-text {
+      margin: 15px 0;
+}
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+    a {
+        color: #42b983;
+    }
 </style>

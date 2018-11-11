@@ -1,19 +1,19 @@
 <template>
   <div class="home">
-    <HelloWorld msg="سامانه صدور و پرداخت قبوض"/>
+    <HeadText title="سامانه صدور و پرداخت قبوض"/>
   </div>
 </template>
 
 <script>
 
-import HelloWorld from '@/components/HelloWorld.vue'
+import HeadText from '@/components/HeadText.vue'
 import Card from '@/components/Card.vue'
 
 
 export default {
   name: 'apps',
   components: {
-    HelloWorld,
+    HeadText,
     Card
   }
 }

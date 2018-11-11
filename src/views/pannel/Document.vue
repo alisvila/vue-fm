@@ -848,7 +848,7 @@
 
 <script>
 
-import HelloWorld from '@/components/HelloWorld.vue'
+import HeadText from '@/components/HeadText.vue'
 import Apps from '@/views/pannel/Apps.vue'
 import SideMenu from '@/components/SideMenu.vue'
 import Card from '@/components/Card.vue'
@@ -859,7 +859,7 @@ import TopMenu from '@/components/TopMenu.vue'
 export default {
   name: 'documents',
   components: {
-    HelloWorld,
+    HeadText,
     Apps,
     SideMenu,
     Card,

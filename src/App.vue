@@ -1,16 +1,15 @@
 <template>
   <div id="app">
+
     <router-view/>
+    
   </div>
 </template>
 
 <script>
-import SideMenu from '@/components/SideMenu.vue'
-
 
 export default {
   components: {
-    SideMenu
   } 
 }
 
@@ -31,7 +30,7 @@ body, div, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, span {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #3f6c71;
 }
 #nav {
   padding: 30px;

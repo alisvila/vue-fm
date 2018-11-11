@@ -1,15 +1,16 @@
 <template>
   <div class="hero">
-    <h1>{{ msg }}</h1>
-    <p>به زودی</p>
+    <h1>{{ title }}</h1>
+    <p>{{ subtitle }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'HeadText',
   props: {
-    msg: String
+    title: String,
+    subtitle: String
   }
 }
 </script>

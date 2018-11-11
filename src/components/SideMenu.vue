@@ -18,7 +18,7 @@
             </router-link>
         </li>
         <li class="active">
-            <router-link to="/pannel/documents" class="nav-link">
+            <router-link to="/pannel/example" class="nav-link">
             <i class="fa fa-dashboard"></i><span>نمونه کد</span>
             </router-link>
         </li>
@@ -26,6 +26,7 @@
         <li><a  class="nav-link" href="pdf/tashim.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i><span>حساب میانی و تسهیم</span></a></li>
         <li><a  class="nav-link" href="#sample-code"><i class="fa fa-code"></i><span>نمونه کد</span></a></li> -->
     </ul>
+    <p>{{year}}تمامی حقوق و اینا</p>
 </nav>
 </div>
 
@@ -34,6 +35,17 @@
 <script>
 export default {
     name: 'SideMenu',
+    data() {
+        return {
+            year: ''
+        }
+    },
+    method: {
+        calyear: function() {
+            let d = new Date()
+            this.year = d.getFullYear()
+        }
+    }
 }
 </script>
 

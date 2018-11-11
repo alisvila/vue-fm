@@ -9,6 +9,11 @@ import Apps from './views/pannel/Apps.vue'
 import NewService from './views/pannel/NewService.vue'
 import PannelIndex from './views/pannel/index.vue'
 import Documents from './views/pannel/Document.vue'
+import AppDetail from './views/pannel/ServiceDetail.vue'
+import Example from './views/pannel/Example.vue'
+
+
+
 
 
 
@@ -69,6 +74,16 @@ export default new Router({
       path: '/pannel/documents',
       name: 'Documents',
       component: Documents
+    },
+    {
+      path: '/pannel/app',
+      name: 'AppDetail',
+      component: AppDetail
+    },
+    {
+      path: '/pannel/example',
+      name: 'Example',
+      component: Example
     },
     
   ]

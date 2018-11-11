@@ -10,14 +10,14 @@
 
 <script>
 
-import HelloWorld from '@/components/HelloWorld.vue'
+import HeadText from '@/components/HeadText.vue'
 import singleOrder from '@/components/single-order.vue'
 
 export default {
   name: 'home',
   components: {
     singleOrder,
-    HelloWorld
+    HeadText
   }
 }
 </script>

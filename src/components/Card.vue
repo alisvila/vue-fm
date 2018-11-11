@@ -12,8 +12,9 @@
         <p>{{status}}</p>
         <div class="approved-icone">
         <i class="fa fa-trash-o"></i>
-        <a href="/pannel/delte" class="btn btn-finno btn-small confirm hidden"
-                data-client="ffilan">حذف شود؟</a>
+
+        <a href="/pannel/new" v-if="isNew" class="btn btn-finno btn-small confirm hidden">افزودن</a>
+        <a href="/pannel/delte" v-else class="btn btn-finno btn-small confirm hidden">حذف شود؟</a>
         </div>
 </div>
 </div>
@@ -27,7 +28,8 @@ export default {
     status: String,
     image: String,
     link: String,
-    name: String
+    name: String,
+    isNew: Boolean
   },
 }
 </script>

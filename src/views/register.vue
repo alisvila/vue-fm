@@ -4,31 +4,32 @@
     <div class="row">
         <div class="login-wrapper">
             <form class="form-signin">
-                <img class="mb-4" src="../assets/logo.png" alt="" width="72" height="72">
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword" class="sr-only">Password</label>
+                <img class="mb-4 logo" src="../assets/finnoboom.png" alt="">
 
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword" class="sr-only">Password</label>
+                <input v-model="fname" type="text" id="inputPassword" class="form-control" placeholder="نام" required>
+                <label for="inputPassword" class="sr-only"></label>
 
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword" class="sr-only">Password</label>
+                <input v-model="lname" type="text" id="inputPassword" class="form-control" placeholder="نام خوانوادگی" required>
+                <label for="inputPassword" class="sr-only"></label>
 
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <label for="inputEmail" class="sr-only">آدرس ایمیل</label>
+                <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="آدرس ایمیل" required autofocus>
+                
+                <label for="inputPassword" class="sr-only"></label>
+                <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="کلمه عبور" required>
+
+                <label for="inputPassword" class="sr-only"></label>
+                <input v-model="repassword" type="password" id="inputPassword" class="form-control" placeholder="تکرار کلمه عبور" required>
+
+                <label for="inputPassword" class="sr-only"></label>
+                <input v-model="mobile" type="number" id="inputPassword" class="form-control" placeholder="شماره همراه" required>
+
+                <label for="inputPassword" class="sr-only"></label>
+                <input v-model="company" type="text" id="inputPassword" class="form-control" placeholder="نام شرکت" required>
 
                 <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <a class="btn btn-lg btn-finno btn-block" @click="regisetr">ثبت نام</a>
             </form>
         </div>
     </div>
@@ -39,31 +40,38 @@
 export default {
 
     name: 'login',
-    data: {
-        apiUrl: 'http://service.sirang.sabinarya.com/api',
-        alert: false,
-        type: "",
-        msg: "",
-        username: "",
-        password: "",
-        name: "",
-        mobile: "",
-        email: "",
+    data() {
+        return {
+            apiUrl: 'http://test-service.sirang.sabinarya.com',
+            alert: false,
+            type: "",
+            msg: "",
+            fname: "",
+            lname: "",
+            username: "",
+            password: "",
+            repassword: "",
+            mobile: "",
+            email: "",
+            company: "",
+            IsActive: true,
+            EmailConfirmed: true,
+        }
     },
     methods: {
         regisetr: function() {
-            fetch(this.apiUrl + "/login", {
+            fetch(this.apiUrl + "/api/UserManagement", {
                 method: "post",
                 headers: {
                 'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    Name: name,
-                    username: username,
-                    password: password,
-                    Mobile: mobile,
-                    Email: email,
-                    Description: "finnoboom",
+                    Name: this.fname + " " + this.lname,
+                    username: this.fname + this.lname + "finno",
+                    password: this.password,
+                    Mobile: this.mobile,
+                    Email: this.email,
+                    Description: "finnoboom " + this.company,
                 })
             })
             .then( (response) => {
@@ -94,12 +102,17 @@ export default {
 <style scoped>
 .login-wrapper {
     margin: 15% auto;
-    width: 400px;
-    padding: 25px;
+    width: 445px;
+    padding: 40px;
     border: 1px solid #e6e6e6;
     background-color: #fbfbfb;
+    direction: rtl;
 }
 .login-wrapper input {
     margin-bottom: 10px;
+}
+
+.logo {
+    width: 96%;
 }
 </style>

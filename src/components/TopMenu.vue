@@ -3,7 +3,7 @@
     <div class="navbar-header col-xs-5">
         <!-- <a class="navbar-brand" href="#"> -->
             <!-- <img class="logo" src="@/assets/finnoboom.png"> -->
-        <span class="navbar-brand" >acc name</span>
+        <span class="navbar-brand" >نام کاربری</span>
         <!-- </a> -->
     </div>
     <ul class="nav pull-right messages">
@@ -11,7 +11,7 @@
     </ul>
     <ul class="nav mr-auto">
         <ul class="nav navbar-nav pull-right signout">
-            <a href="/exit" class="top-link">خــروج</a>
+            <a href="/" class="top-link">خــروج</a>
         </ul>
         <!-- <ul class="nav navbar-nav pull-right change-pass"><a class="btn btn-default">تغییر رمز عبور</a>
             <img class="loading" src="svg/loop.svg" style="display: none;">
@@ -46,7 +46,7 @@ export default {
 
 .top-link {
     padding: 15px;
-    color: #2c3e50;
+    color: #3f6c71;
     text-decoration: none;
 }
 

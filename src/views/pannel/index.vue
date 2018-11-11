@@ -4,15 +4,15 @@
   <div class="container-fluid">
     <SideMenu />
     <div class="pannel-home">
-    <HelloWorld msg="سامانه صدور و پرداخت قبوض"/>
+    <HeadText title="" subtitle=""/>
     <div class="row">
 
         <div class="col-lg-4 col-sm-12 col-md-6">
-            <card link="/pannel/new" status="در حال بررسی" :image="require('@/assets/logo.png')" name="جدید"/>
+            <card link="/pannel/app" status="در حال بررسی" :image="require('@/assets/logo.png')" name="سابین"/>
         </div>
 
         <div class="col-lg-4 col-sm-12 col-md-6">
-            <card link="/pannel/new" status="افزودن برنامه جدید" :image="require('@/assets/finno.png')" name="جدید" new="false"/>
+            <card link="/pannel/new" status="افزودن برنامه جدید" :image="require('@/assets/finno-new.png')" name="جدید" isNew="true"/>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
 
 <script>
 
-import HelloWorld from '@/components/HelloWorld.vue'
+import HeadText from '@/components/HeadText.vue'
 import Apps from '@/views/pannel/Apps.vue'
 import SideMenu from '@/components/SideMenu.vue'
 import Card from '@/components/Card.vue'
@@ -34,7 +34,7 @@ import TopMenu from '@/components/TopMenu.vue'
 export default {
   name: 'home',
   components: {
-    HelloWorld,
+    HeadText,
     Apps,
     SideMenu,
     Card,

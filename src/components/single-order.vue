@@ -14,7 +14,7 @@
 
 <script>
 
-import HelloWorld from '@/components/HelloWorld.vue'
+import HeadText from '@/components/HeadText.vue'
 
 export default {
   name: 'single-order',
@@ -22,7 +22,7 @@ export default {
       msg: ""
   },
   components: {
-    HelloWorld,
+    HeadText,
   }
 }
 </script>
