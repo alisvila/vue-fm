@@ -10,11 +10,15 @@ import 'fullpage.js/dist/fullpage.min.css'
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import VueFullPage from 'vue-fullpage.js'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import VueJwtDecode from 'vue-jwt-decode'
 
-
+Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue);
 Vue.use(VueFormWizard);
 Vue.use(VueFullPage);
+Vue.use(VueJwtDecode)
 Vue.config.productionTip = false
 
 new Vue({

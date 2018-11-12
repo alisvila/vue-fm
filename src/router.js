@@ -7,14 +7,11 @@ import Login from './views/Login.vue'
 import Register from './views/register.vue'
 import Apps from './views/pannel/Apps.vue'
 import NewService from './views/pannel/NewService.vue'
-import PannelIndex from './views/pannel/index.vue'
+import pannelIndex from './views/pannel/index.vue'
 import Documents from './views/pannel/Document.vue'
 import AppDetail from './views/pannel/ServiceDetail.vue'
 import Example from './views/pannel/Example.vue'
-
-
-
-
+import service1 from './documents/service1'
 
 
 Vue.use(Router)
@@ -67,8 +64,8 @@ export default new Router({
     },
     {
       path: "/pannel",
-      name: "PannelIndex",
-      component: PannelIndex
+      name: "pannelIndex",
+      component: pannelIndex
     },
     {
       path: "/pannel/documents",
@@ -85,6 +82,12 @@ export default new Router({
       name: "Example",
       component: Example
     },
+    {
+      path: "/pannel/doc/service1",
+      name: "service1",
+      component: service1
+    },
+    
     
   ]
 })

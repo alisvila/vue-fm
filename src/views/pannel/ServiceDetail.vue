@@ -76,6 +76,7 @@
                 </tr>
             </tbody>
             </table>
+            <a class="btn btn-finno" @click="getService">click here</a>
         </div>
         </div>
 
@@ -114,7 +115,11 @@ export default {
 
         }
     },
-    method: {
+    methods: {
+        getService: function() {
+            console.log(this.$store.state.servicNo)
+
+        }
 
     }
 }

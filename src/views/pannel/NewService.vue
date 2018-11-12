@@ -6,7 +6,7 @@
     <div class="pannel-home">
     <div class="wrapper">
 
-    <form-wizard @on-complete="onComplete" 
+    <form-wizard @on-complete="submitService" 
                         shape="tab"
                         color="#ff9900"
                         next-button-text="بعدی"
@@ -169,7 +169,7 @@
                 </tr>
                 <tr>
                     <td>آدرس ایمیل:</td>
-                    <td class="dir-ltr">{{formInput.appName}}</td>
+                    <td class="dir-ltr">{{formInput.email}}</td>
                     <td></td>
                     <td><i class="fa fa-check"></i></td>
                 </tr>
@@ -198,7 +198,7 @@
 
             </p>
             <p>
-                در صورتی که مشتری خواهان خاتمه دوره برداشت در تاریخی زودتر از موعد مقرر شود، این امر به درخواست کلاینت و با تسویه حساب بین کلاینت و شرکت سابین تجارت آریا انجام خواهد شد: کابر سرویس‌های فینوتک (کلاینت) در صورت عدم تمایل به استفاده از سرویس‌های ارائه شده، می تواند با رعایت شرایط لازم
+                در صورتی که مشتری خواهان خاتمه دوره برداشت در تاریخی زودتر از موعد مقرر شود، این امر به درخواست کلاینت و با تسویه حساب بین کلاینت و شرکت سابین تجارت آریا انجام خواهد شد: کابر سرویس‌های فینوبوم (کلاینت) در صورت عدم تمایل به استفاده از سرویس‌های ارائه شده، می تواند با رعایت شرایط لازم
                  و پس از تسویه حساب با شرکت سابین تجارت آریا اجازه خود را ملغی کرده و به آن خاتمه دهد.
                  الغای اجازه می‌تواند به چند شیوه انجام شود:
             </p>
@@ -239,6 +239,7 @@ import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import SideMenu from '@/components/SideMenu.vue'
 import TopMenu from '@/components/TopMenu.vue'
 import allServices from '@/assets/services.json'
+import getAdmin from '@/_helper/api'
 
 
 export default {
@@ -262,6 +263,8 @@ export default {
            activityType: '',
            privacy: ''
          },
+         admin: this.$store.state.admin,
+         apiUrl: 'http://test-service.sirang.sabinarya.com',
         sectedService: [],
         services: allServices,
          rules: {
@@ -284,9 +287,80 @@ export default {
         }
        },
        methods: {
-         onComplete: function() {
-           alert('Yay. Done!');
-         },
+           submitService: function() {
+            // let admin = localStorage.getItem('admin-id')
+            this.axios.defaults.headers.common["Access-Control-Allow-Origin"] = '*'
+            let number = this.$store.state.servicNo;
+            let admin = this.$store.state.admin;
+            let userName = this.$store.state.userName;
+            const {formInput} = this
+            let user =  JSON.parse(localStorage.getItem('user'))
+            let payload = [{
+                                "id": number + 1,
+                                "user": formInput.user,
+                                "appName": formInput.appName,
+                                "IpAddress": formInput.IpAddress,
+                                "appCode": formInput.appCode,
+                                "companyName": formInput.companyName,
+                                "webAddress": formInput.webAddress,
+                                "callBackUrl": formInput.callBack,
+                                "activityType": formInput.activityType,
+                                "sectedService": this.sectedService
+            }]
+            let desc = user.Description.concat(JSON.stringify(payload))
+            this.axios({
+                method: 'put',
+                url: this.apiUrl + '/api/UserManagement', 
+                data: JSON.stringify({
+                        "Id": localStorage.getItem('user-id'),
+                        "Name": user.DisplayName,
+                        "Description": desc,
+                        "Photo": null,
+                        "UserName": user.UserName,
+                        "Email": null,
+                        "JoinDate": user.JoinDate,
+                        "EmailConfirmed": false,
+                        "IsActive": true,
+                        "SendSMS": true
+                }),
+                headers: { 
+                    "Authorization": admin,
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    'Accept': '*/*'
+                    }
+            })
+            .then (function(response) {
+                console.log(response)               
+                localStorage.setItem('user', JSON.stringify(response.data))
+            })
+            .catch( function(err) {
+                console.log(err)
+            })
+           },
+           getUser: function(id) {
+            let admin = this.$store.state.admin;
+               
+            this.axios({
+                method: 'get',
+                url: this.apiUrl + '/api/UserManagement/' + localStorage.getItem('user-id'),
+                headers: { 
+                    "Authorization": admin,
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    'Accept': '*/*'
+                }
+            })
+            .then (function(response) {
+                localStorage.setItem('user', JSON.stringify(response.data))
+                console.log(response.data)
+            })
+            .catch( function(err) {
+                console.log(err)
+            })
+           },
+        //  onComplete: this.submitService(),        
+
             beforeTabSwitch: function(){
           return true;
         },
@@ -298,7 +372,10 @@ export default {
            })
 
          }
-       }
+       },
+       beforeMount() {
+           this.getUser(localStorage.getItem('user-id'))
+        }
 }
 
 </script>

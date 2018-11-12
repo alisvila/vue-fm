@@ -60,38 +60,74 @@ export default {
     },
     methods: {
         regisetr: function() {
-            fetch(this.apiUrl + "/api/UserManagement", {
-                method: "post",
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
+            console.log(this.$store.state.admin)
+            let admin = "bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI0NiIsInVuaXF1ZV9uYW1lIjoiYWxpYW0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiI5Y2JiY2E4Mi0zYTViLTRhNDktODIxNS05YTg2NGIyZWU5NjUiLCJyb2xlIjoi2YXYr9uM2LEiLCJTZXNzaW9uSUQiOiJmMzNmNjdjYmFhMTI0ZmExYTJhZTc3NjA5NzhjNTYxMSIsIkJ1c2luZXNzUm9sZSI6IjEiLCJQZXJtaXNzaW9ucyI6WyIxMTAiLCIxMTEiLCIxMTIiLCIxMTMiLCIxMTQiLCIxMTUiLCIxMTYiLCIxMTciLCIxMTgiLCIxMTkiLCIxMjAiLCIxMjEiLCIyMDAiLCIyMDEiLCIyMDIiLCIyMDMiLCIyMDQiLCIyMDUiLCIyMDYiLCIyMDciLCIyMDgiLCIyMDkiLCIyMTAiLCIyMjEiLCIyMjIiLCIyMjMiLCIyMjQiLCIyMjUiLCIyMjYiLCIyMjciLCIyMjgiLCIyMjkiLCIyMzAiLCIyMzEiLCIyMzIiLCIyMzMiLCIyMzQiLCIyMzUiLCIyMzYiLCIyMzciLCIyMzgiLCIyMzkiLCIyNDAiLCIyNDEiLCIyNDIiLCIyNDMiLCIyNDQiLCIyNDUiLCIyNDYiLCIyNDciLCIyNDgiLCIyNDkiLCIyNTAiLCIyNTEiLCIyNTIiLCIzMDAiLCIzMDEiLCIzMDIiLCIzMDMiLCIzMTAiLCIzMTEiLCIzMTIiLCIzMTMiLCIzMTQiLCIzMTUiLCIzMTYiLCIzMTciLCIzMTgiLCIzMTkiLCIzMjAiLCIzMjEiLCIzMjIiLCIzMjMiLCIzMjQiLCIzMjUiLCIzMjYiLCIzMjciLCIzMjgiLCIzMjkiLCIzMzAiLCIzMzEiLCIzMzIiLCIzMzMiLCIzMzQiLCIzMzUiLCIzMzYiLCIzMzciLCIzMzgiXSwiRGlzcGxheU5hbWUiOiJhbGkiLCJpc3MiOiJNQmlzc3VlciIsImF1ZCI6IjQxNGUxOTI3YTM4ODRmNjhhYmM3OWY3MjgzODM3ZmQxIiwiZXhwIjoxNTU5Mjg5OTkwLCJuYmYiOjE1NDIwMDk5OTB9.5BIRb28bf5Mn1SuwaFd3UZa8T9LrIoHhcI25nEomC8Q"
+            let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI0NiIsInVuaXF1ZV9uYW1lIjoiYWxpYW0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiI5Y2JiY2E4Mi0zYTViLTRhNDktODIxNS05YTg2NGIyZWU5NjUiLCJyb2xlIjoi2YXYr9uM2LEiLCJTZXNzaW9uSUQiOiJmMzNmNjdjYmFhMTI0ZmExYTJhZTc3NjA5NzhjNTYxMSIsIkJ1c2luZXNzUm9sZSI6IjEiLCJQZXJtaXNzaW9ucyI6WyIxMTAiLCIxMTEiLCIxMTIiLCIxMTMiLCIxMTQiLCIxMTUiLCIxMTYiLCIxMTciLCIxMTgiLCIxMTkiLCIxMjAiLCIxMjEiLCIyMDAiLCIyMDEiLCIyMDIiLCIyMDMiLCIyMDQiLCIyMDUiLCIyMDYiLCIyMDciLCIyMDgiLCIyMDkiLCIyMTAiLCIyMjEiLCIyMjIiLCIyMjMiLCIyMjQiLCIyMjUiLCIyMjYiLCIyMjciLCIyMjgiLCIyMjkiLCIyMzAiLCIyMzEiLCIyMzIiLCIyMzMiLCIyMzQiLCIyMzUiLCIyMzYiLCIyMzciLCIyMzgiLCIyMzkiLCIyNDAiLCIyNDEiLCIyNDIiLCIyNDMiLCIyNDQiLCIyNDUiLCIyNDYiLCIyNDciLCIyNDgiLCIyNDkiLCIyNTAiLCIyNTEiLCIyNTIiLCIzMDAiLCIzMDEiLCIzMDIiLCIzMDMiLCIzMTAiLCIzMTEiLCIzMTIiLCIzMTMiLCIzMTQiLCIzMTUiLCIzMTYiLCIzMTciLCIzMTgiLCIzMTkiLCIzMjAiLCIzMjEiLCIzMjIiLCIzMjMiLCIzMjQiLCIzMjUiLCIzMjYiLCIzMjciLCIzMjgiLCIzMjkiLCIzMzAiLCIzMzEiLCIzMzIiLCIzMzMiLCIzMzQiLCIzMzUiLCIzMzYiLCIzMzciLCIzMzgiXSwiRGlzcGxheU5hbWUiOiJhbGkiLCJpc3MiOiJNQmlzc3VlciIsImF1ZCI6IjQxNGUxOTI3YTM4ODRmNjhhYmM3OWY3MjgzODM3ZmQxIiwiZXhwIjoxNTU5Mjg5OTkwLCJuYmYiOjE1NDIwMDk5OTB9.5BIRb28bf5Mn1SuwaFd3UZa8T9LrIoHhcI25nEomC8Q"
+
+
+            console.log(this.jwtDec(token))
+                this.axios({
+                method: 'post',
+                url: this.apiUrl + '/api/UserManagement', 
+                data: {
                     Name: this.fname + " " + this.lname,
                     username: this.fname + this.lname + "finno",
                     password: this.password,
                     Mobile: this.mobile,
                     Email: this.email,
+                    "IsActive": true,
+                    "EmailConfirmed": true,
                     Description: "finnoboom " + this.company,
+                },
+                headers: { 
+                    "Authorization": admin,
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                    "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
+                    'Accept': '*/*'
+                    }
                 })
-            })
-            .then( (response) => {
-                if (!response.ok) {
-                throw Error(response.statusText);
-                }
-                else {
-                return response;
-                }
-            })
-            .then( () => {
-                this.alert = true
-                this.type= "alert-success"
-                this.msg = "success"
-            })
-            .catch( () => {
-                this.alert = true
-                this.type= "alert-danger"
-                this.msg = "error"
-            })
+                .then (function(response) {
+                    this.$store.state.userId = response.Id
+                    console.log(response)
+                })
+                .catch( function(err) {
+                    console.log(err)
+                })
+
+            // fetch(this.apiUrl + "/api/UserManagement", {
+            //     method: "post",
+            //     headers: {
+            //     'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({
+            //         Name: this.fname + " " + this.lname,
+            //         username: this.fname + this.lname + "finno",
+            //         password: this.password,
+            //         Mobile: this.mobile,
+            //         Email: this.email,
+            //         Description: "finnoboom " + this.company,
+            //     })
+            // })
+            // .then( (response) => {
+            //     if (!response.ok) {
+            //     throw Error(response.statusText);
+            //     }
+            //     else {
+            //     return response;
+            //     }
+            // })
+            // .then( () => {
+            //     this.alert = true
+            //     this.type= "alert-success"
+            //     this.msg = "success"
+            // })
+            // .catch( () => {
+            //     this.alert = true
+            //     this.type= "alert-danger"
+            //     this.msg = "error"
+            // })
 
         }
     }

@@ -1,7 +1,4 @@
 <template>
-  <div class="home">
-    <HeadText title="سامانه صدور و پرداخت قبوض"/>
-  </div>
 </template>
 
 <script>
@@ -14,7 +11,7 @@ export default {
   name: 'apps',
   components: {
     HeadText,
-    Card
+    Card,
   }
 }
 </script>

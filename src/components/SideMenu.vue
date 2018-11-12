@@ -16,6 +16,12 @@
             <router-link to="/pannel/documents" class="nav-link">
             <i class="fa fa-dashboard"></i><span> مستندات فنی</span>
             </router-link>
+            <ul>
+                <li>
+                </li><li>
+                </li><li>
+                </li>
+            </ul>
         </li>
         <li class="active">
             <router-link to="/pannel/example" class="nav-link">

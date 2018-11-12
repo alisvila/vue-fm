@@ -8,9 +8,9 @@
 <section class="documents text-right">
     <h4>پیشنهاد می شود پیش از مطالعه مستندات فنی که در ادامه بیان شده است، به مطالعه<a target="_blank" href="#guide">
             مفاهیم اولیه</a> بپردازید</h4><br><br>
-    <h4>سرویس‌های فینوتک</h4>
-    <p>سرویس‌های فینوتک به ۳ دسته «بانکی»، «تسهیلگر عملیات و پرداخت» و «بورس» تقسیم می شوند. </p>
-    <p>سرویـس‌های بانکـی فینوتک به دو دسته تقسیم می‌‌شوند: «خدمـات مبتنی بر کارت» و «خدمـات مبتنی بر حـساب». توضیحات
+    <h4>سرویس‌های فینوبوم</h4>
+    <p>سرویس‌های فینوبوم به ۳ دسته «بانکی»، «تسهیلگر عملیات و پرداخت» و «بورس» تقسیم می شوند. </p>
+    <p>سرویـس‌های بانکـی فینوبوم به دو دسته تقسیم می‌‌شوند: «خدمـات مبتنی بر کارت» و «خدمـات مبتنی بر حـساب». توضیحات
         کاملی در رابطه با تمام این سرویـس‌ها، نوع استفاده، عملکرد و بازدهـی آنها ارائه شده است که می‌توانید با مطالعه
         آن، تمام اطلاعات مورد نیاز خود را به دست بیاورید.</p>
     <p>سرویس‌های تسهیلگر عملیات و پرداخت، کمک می‌کنند تا کسب‌و‌کار‌ها بتوانند از خدمات تسهیلگری مانند اعتبارسنجی و یا
@@ -18,12 +18,12 @@
         و سفارشی سازی راهکارهای بانکی ساده میکند.</p>
     <p>سرویس های بورس با پردازش داده ها و اطلاعات شرکت ها به کسب و کارها امکان استفاده از نتایج را در راستای اهداف خود
         می دهد</p><br>
-    <h4>فهرست سرویس‌های بانکی فینوتک</h4>
-    <p>همانگونه که گفته شد سرویس‌های بانکی فینوتک به دودسته سرویس‌های کارتی یا مبتنی بر کارت و سرویس‌های حسابی یا مبتنی
+    <h4>فهرست سرویس‌های بانکی فینوبوم</h4>
+    <p>همانگونه که گفته شد سرویس‌های بانکی فینوبوم به دودسته سرویس‌های کارتی یا مبتنی بر کارت و سرویس‌های حسابی یا مبتنی
         بر حساب تقسیم می‌شوند. که در ادامه به تفکیک این سرویس‌ها معرفی می‌شوند.</p><br>
     <h5>سرویس‌های مبتنی بر حساب</h5>
-    <p>سرویس‌های مبتنی بر حساب فینوتک که با استفاده از OAuth قابل فراخوانی است، در دو دسته اصلی زیر قرار می گیرد:</p>
-    <p>سرویس‌های مبتنی بر حساب فینوتک در جدول زیر لیست شده‌اند. لازم به ذکر است سرویس ایجاد دستور پرداخت به دلیل شرایط
+    <p>سرویس‌های مبتنی بر حساب فینوبوم که با استفاده از OAuth قابل فراخوانی است، در دو دسته اصلی زیر قرار می گیرد:</p>
+    <p>سرویس‌های مبتنی بر حساب فینوبوم در جدول زیر لیست شده‌اند. لازم به ذکر است سرویس ایجاد دستور پرداخت به دلیل شرایط
         خاص، نیاز به استفاده از سرویس‌های مکمل دارد که در جدول دیگری این سرویس‌ها نشان داده شده‌اند.</p>
     <ul>
         <li>سرویس‌های پایه بانکی</li>
@@ -45,57 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>۱</td>
-                    <td>افتتاح حساب</td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>۲</td>
-                    <td><a target="_blank" href="/oak-withdrawalFrom.html?sandbox=true">برداشت از</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td>
-                        <p float="left"> <img src="/svg/ayande.svg" width="100" title="بانک آینده" style="margin-right:4px">
-                            <img src="/png/iz.png" width="100" title="بانک ایران‌زمین" style="margin-right:4px"> <img
-                                src="/png/dey.png" width="100" title="بانک دی" style="margin-right:4px"><img src="/png/ansar.png"
-                                width="100" title="بانک انصار" style="margin-right:4px"><img src="/png/en.png" width="100"
-                                style="margin-right:4px" title="بانک اقتصادنوین"></p>
-                    </td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>۳</td>
-                    <td><a target="_blank" href="/oak-charge-card.html?sandbox=true">شارژ آنی کارت</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr>
-                    <td>۴</td>
-                    <td><a target="_blank" href="/oak-card-balance.html?sandbox=true">دریافت موجودی بن‌کارت</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>۵</td>
-                    <td><a target="_blank" href="/oak-card-statement.html?sandbox=true">دریافت گردش بن‌کارت</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                </tr>
+                
                 <tr>
                     <td>۶</td>
                     <td><a target="_blank" href="/oak-deposits-to-IBAN-get.html?sandbox=true">تبدیل شماره حساب به شبا</a></td>
@@ -156,148 +106,7 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td>۱۱</td>
-                    <td><a target="_blank" href="/oak-transferTo-deposit.html?sandbox=true">واریز به حساب دیگری</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td>
-                        <p float="left"> <img src="/svg/ayande.svg" width="100" title="بانک آینده" style="margin-right:4px">
-                            <img src="/png/iz.png" width="100" title="بانک ایران‌زمین" style="margin-right:4px"> <img
-                                src="/png/dey.png" width="100" title="بانک دی" style="margin-right:4px"><img src="/png/ansar.png"
-                                width="100" title="بانک انصار" style="margin-right:4px"><img src="/png/en.png" width="100"
-                                style="margin-right:4px" title="بانک اقتصادنوین"></p>
-                    </td>
-                    <td></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr>
-                    <td>۱۲</td>
-                    <td><a target="_blank" href="/oak-transferTo-card.html?sandbox=true">واریز وجه از حساب به کارت</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td>
-                        <p float="left"><img src="/svg/ayande.svg" width="100" title="بانک آینده" style="margin-right:4px">
-                            <img src="/png/iz.png" width="100" title="بانک ایران‌زمین" style="margin-right:4px"> <img
-                                src="/png/dey.png" width="100" title="بانک دی" style="margin-right:4px"><img src="/png/ansar.png"
-                                width="100" title="بانک انصار" style="margin-right:4px"><img src="/png/en.png" width="100"
-                                style="margin-right:4px" title="بانک اقتصادنوین"></p>
-                    </td>
-                    <td></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr>
-                    <td>۱۳</td>
-                    <td> <a target="_blank" href="/kilid-createRequest.html?sandbox=true">ایجاد دستور پرداخت</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr class="hidden">
-                    <td>۸-۲</td>
-                    <td><a target="_blank" href="/oak-payas.html?sandbox=true">گزارش پایا</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr>
-                    <td>۱۴</td>
-                    <td><a target="_blank" href="/oak-balance.html?sandbox=true">مانده موجودی حساب</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td>
-                        <p float="left"><img src="/svg/ayande.svg" width="100" title="بانک آینده" style="margin-right:4px">
-                            <img src="/png/iz.png" width="100" title="بانک ایران‌زمین" style="margin-right:4px"> <img
-                                src="/png/dey.png" width="100" title="بانک دی" style="margin-right:4px"><img src="/png/ansar.png"
-                                width="100" title="بانک انصار" style="margin-right:4px"><img src="/png/en.png" width="100"
-                                style="margin-right:4px" title="بانک اقتصادنوین"></p>
-                    </td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr>
-                    <td>۱۵</td>
-                    <td><a target="_blank" href="/oak-statement.html?sandbox=true">دریافت گردش حساب</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td>
-                        <p float="left"><img src="/svg/ayande.svg" width="100" title="بانک آینده" style="margin-right:4px">
-                            <img src="/png/iz.png" width="100" title="بانک ایران‌زمین" style="margin-right:4px"> <img
-                                src="/png/dey.png" width="100" title="بانک دی" style="margin-right:4px"><img src="/png/ansar.png"
-                                width="100" title="بانک انصار" style="margin-right:4px"><img src="/png/en.png" width="100"
-                                style="margin-right:4px" title="بانک اقتصادنوین"></p>
-                    </td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr>
-                    <td>۱۶</td>
-                    <td><a target="_blank" href="/oak-block.html?sandbox=true">مسدودی</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                </tr>
-                <tr class="hidden">
-                    <td>۱۵</td>
-                    <td><a target="_blank" href="/oak-unblock.html?sandbox=true">رفع مسدودی</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                </tr>
-                <tr class="hidden">
-                    <td>۱۶</td>
-                    <td><a target="_blank" href="/oak-withdrawal-after-unblock.html?sandbox=true">برداشت وجه پس از رفع
-                            مسدودی</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                </tr>
-                <tr class="hidden">
-                    <td>۱۷</td>
-                    <td><a target="_blank" href="/oak-chequebook-get.html?sandbox=true">لیست دسته چک‌ها</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr>
-                    <td>۱۷</td>
-                    <td><a target="_blank" href="/oak-cheque-get.html?sandbox=true">استعلام وضعیت چک</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                </tr>
-                <tr>
-                    <td>۱۸</td>
-                    <td><a target="_blank" href="/oak-facility-get.html?sandbox=true">استعلام تسهیلات </a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>۱۹</td>
-                    <td><a target="_blank" href="/oak-backcheque-get.html?sandbox=true">استعلام چک برگشتی</a></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td></td>
-                    <td></td>
-                    <td><i class="fa fa-check-circle"></i></td>
-                    <td> </td>
-                </tr>
+               
                 <tr>
                     <td>۲۰</td>
                     <td><a target="_blank" href="/oak-user.html?sandbox=true">استعلام مشتری</a></td>
@@ -332,84 +141,7 @@
                     <td><a target="_blank" href="/card-getList.html?sandbox=true">دریافت لیست کارت‌های شتابی</a></td>
                     <td>شتابی</td>
                 </tr>
-                <tr>
-                    <td>۳</td>
-                    <td><a target="_blank" href="/card-transfer-peyvand.html?sandbox=true">انتقال وجه کارت به کارت
-                            (سامانه پیوند)</a></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                </tr>
-                <tr>
-                    <td>۳-۱</td>
-                    <td class="key"><a target="_blank" href="/card-transfer.html?sandbox=true">انتقال وجه کارت به کارت</a></td>
-                    <td>شتابی</td>
-                </tr>
-                <tr>
-                    <td>۳-۲</td>
-                    <td class="key"><a target="_blank" href="/card-transfer.html?sandbox=true">انتقال وجه کارت به کارت
-                            از مبدا کارت‌های آینده</a></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                </tr>
-                <tr>
-                    <td>۳-۳</td>
-                    <td class="key"><a target="_blank" href="/card-transfer-track.html?sandbox=true">پیگیری انتقال وجه
-                            کارت به کارت</a></td>
-                    <td>شتابی</td>
-                </tr>
-                <tr>
-                    <td>۴</td>
-                    <td><a target="_blank" href="/card-transfer-peyvand-track.html?sandbox=true">پیگیری انتقال وجه کارت
-                            به کارت </a></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                </tr>
-                <tr>
-                    <td>۵</td>
-                    <td><a target="_blank" href="/card-bill-payment-peyvand.html?sandbox=true">پرداخت قبض(سامانه پیوند)</a></td>
-                    <td>شتابی</td>
-                </tr>
-                <tr>
-                    <td>۵-۱</td>
-                    <td><a target="_blank" href="/card-bill-payment.html?sandbox=true">پرداخت قبض</a></td>
-                    <td>شتابی</td>
-                </tr>
-                <tr>
-                    <td>۶</td>
-                    <td><a target="_blank" href="/card-bill-info.html?sandbox=true">استعلام قبض</a></td>
-                    <td>شتابی</td>
-                </tr>
-                <tr>
-                    <td>۷</td>
-                    <td><a target="_blank" href="/card-balance.html?sandbox=true">مانده موجودی کارت</a></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                </tr>
-                <tr>
-                    <td>۸</td>
-                    <td><a target="_blank" href="/card-statement.html?sandbox=true">دریافت گردش کارت</a></td>
-                    <td><img src="/svg/ayande.svg"></td>
-                </tr>
-                <tr class="hidden">
-                    <td>۲۱</td>
-                    <td class="key"><a target="_blank" href="/card-mobile-charge.html?sandbox=true">خرید شارژ موبایل
-                        </a></td>
-                    <td>شتابی</td>
-                </tr>
-                <tr class="hidden">
-                    <td>۲۲</td>
-                    <td class="key"><a target="_blank" href="/card-bolton-get.html?sandbox=true">دریافت بسته های
-                            اینترنتی</a></td>
-                    <td>شتابی</td>
-                </tr>
-                <tr class="hidden">
-                    <td>۲۳</td>
-                    <td class="key"><a target="_blank" href="/card-bolton-version.html?sandbox=true">دریافت نسخه بسته
-                            های اینترنتی</a></td>
-                    <td>شتابی</td>
-                </tr>
-                <tr class="hidden">
-                    <td>۲۴</td>
-                    <td class="key"><a target="_blank" href="/card-mobile-charge-peyvand.html?sandbox=true">خرید شارژ
-                            موبایل و بسته اینترنت(پیوندی)</a></td>
-                    <td>شتابی</td>
-                </tr>
+              
             </tbody>
         </table>
     </div><br>

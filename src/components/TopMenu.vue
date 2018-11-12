@@ -3,7 +3,7 @@
     <div class="navbar-header col-xs-5">
         <!-- <a class="navbar-brand" href="#"> -->
             <!-- <img class="logo" src="@/assets/finnoboom.png"> -->
-        <span class="navbar-brand" >نام کاربری</span>
+        <span class="navbar-brand" >{{userName}}</span>
         <!-- </a> -->
     </div>
     <ul class="nav pull-right messages">
@@ -25,6 +25,11 @@
 <script>
 export default {
     name: 'TopMenu',
+    data() {
+        return {
+            userName: localStorage.getItem('dname')
+        }
+    }
 }
 </script>
 
