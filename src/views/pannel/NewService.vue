@@ -239,7 +239,6 @@ import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import SideMenu from '@/components/SideMenu.vue'
 import TopMenu from '@/components/TopMenu.vue'
 import allServices from '@/assets/services.json'
-import getAdmin from '@/_helper/api'
 
 
 export default {
@@ -263,8 +262,8 @@ export default {
            activityType: '',
            privacy: ''
          },
-         admin: this.$store.state.admin,
-         apiUrl: 'http://test-service.sirang.sabinarya.com',
+         admin: '',
+         apiUrl: 'http://service.sirang.sabinarya.com',
         sectedService: [],
         services: allServices,
          rules: {
@@ -288,14 +287,15 @@ export default {
        },
        methods: {
            submitService: function() {
-            // let admin = localStorage.getItem('admin-id')
-            this.axios.defaults.headers.common["Access-Control-Allow-Origin"] = '*'
+            let admin = localStorage.getItem('admin-token')
             let number = this.$store.state.servicNo;
-            let admin = this.$store.state.admin;
+            // let admin = this.$store.state.admin;
             let userName = this.$store.state.userName;
             const {formInput} = this
             let user =  JSON.parse(localStorage.getItem('user'))
-            let payload = [{
+            let jsons = new Array();
+
+            let payload = {
                                 "id": number + 1,
                                 "user": formInput.user,
                                 "appName": formInput.appName,
@@ -306,7 +306,7 @@ export default {
                                 "callBackUrl": formInput.callBack,
                                 "activityType": formInput.activityType,
                                 "sectedService": this.sectedService
-            }]
+            }
             let desc = user.Description.concat(JSON.stringify(payload))
             this.axios({
                 method: 'put',
@@ -324,7 +324,7 @@ export default {
                         "SendSMS": true
                 }),
                 headers: { 
-                    "Authorization": admin,
+                    "Authorization": "bearer " + admin,
                     "Content-Type": "application/json",
                     "Access-Control-Allow-Origin": "*",
                     'Accept': '*/*'
@@ -339,13 +339,15 @@ export default {
             })
            },
            getUser: function(id) {
+                           let {getAdmin} = this
+
             let admin = this.$store.state.admin;
                
             this.axios({
                 method: 'get',
                 url: this.apiUrl + '/api/UserManagement/' + localStorage.getItem('user-id'),
                 headers: { 
-                    "Authorization": admin,
+                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
                     "Content-Type": "application/json",
                     "Access-Control-Allow-Origin": "*",
                     'Accept': '*/*'
@@ -356,6 +358,8 @@ export default {
                 console.log(response.data)
             })
             .catch( function(err) {
+                // getAdmin()
+
                 console.log(err)
             })
            },
@@ -371,10 +375,38 @@ export default {
              });
            })
 
-         }
+         },
+        getAdmin: function() {
+            let {admin} = this
+            this.axios({
+            method: 'post',
+            url: 'http://service.sirang.sabinarya.com/api/account/login', 
+            data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
+            headers: { 
+                "content-type": "application/x-www-form-urlencoded",
+                "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
+                'Accept': '*/*'
+                }
+            })
+            .then (function(response) {
+                let token = response.data.access_token
+                localStorage.setItem('admin-token', token)
+                console.log(token)
+                // getUser(localStorage.getItem('user-id'))
+
+            })
+            .catch( function(err) {
+                console.log(err)
+            })
+        },
+
        },
-       beforeMount() {
+       mounted() {
            this.getUser(localStorage.getItem('user-id'))
+       },
+       created() {
+           this.getAdmin()
         }
 }
 
