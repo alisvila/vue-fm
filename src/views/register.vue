@@ -77,7 +77,7 @@ export default {
                     Email: this.email,
                     "IsActive": true,
                     "EmailConfirmed": true,
-                    Description: "finnoboom " + this.company,
+                    Description: "[]",
                 },
                 headers: { 
                     "Authorization": admin,

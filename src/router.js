@@ -73,7 +73,7 @@ export default new Router({
       component: Documents
     },
     {
-      path: "/pannel/app",
+      path: "/pannel/app/:id",
       name: "AppDetail",
       component: AppDetail
     },

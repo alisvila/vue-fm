@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<html>
+<title>اعلام شماره حساب‌ها با دریافت کد ملی</title>
+<body onload="checkSandbox()">
+ <xmp theme="cerulean" style="display:none;">
+
+###GET  /oak/v1/{nid}/deposits
+
+* **شرح: ** سرویس لیست حساب‌ها, این سرویس هنگامی به کار میرود که شما قصد دارید شماره حساب های مشتریان خود را دریافت نمایید.
+
+* **اسکوپ: **  ```oak:deposits:get```
+
+* **رویکرد: ** ```Authorization_Code```
+
+````````````````
+{address}/oak/v1/{nid}/deposits?trackId={trackId}
+````````````````
+<div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
+ https://sandbox.finnotech.ir <b> :address </b>
+</div>
+
+<div class="production-address production" style="float:right" style="display: block">
+ https://api.finnotech.ir <b> :address </b>
+ </div>
+
+
+#### Headers
+مقادیر زیر باید در هدر قرار بگیرد
+````````````````
+Authorization : Bearer {Token}
+````````````````
+
+#### URI Parameters
+* **nid :**  (اجباری) کد ملی کاربر صاحب حساب مبدا که برای برداشت از او اجازه گرفته اید و باید رشته عددی به طول ۱۰ رقم باشد
+
+#### Query Parameters
+* **trackId :** اختیاری (string)  &#x202b; رشته ای با طول حداکثر ۴۰ کاراکتر شامل حرف و عدد. پیشنهاد ما برای trackId تولید کردن UUID است. در صورت نیاز به نتیجه یک فراخوانی میتوانید با trackId آن را فیلتر کنید. در گزارش فراخوانی سرویس فراخوانی مورد نظر را با همین کد پیگیری پیدا میکنید.
+  * example:  ```deposits-010```
+
+###Results Format
+#### Successful result format (status code 200)
+````````````````
+    [ "0202518954031"
+    , "0100121067088"
+    , "0301073804002"
+    ]
+````````````````
+
+* آرایه ای از شماره حساب های مشتری برگردانده می شود
+
+#### UnSuccessful result format
+ در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
+
+</xmp>
+</body>
+<script src="https://sandbox.finnoboom.com/strapdown.js"></script>
+<script src="https://sandbox.finnoboom.com/controler.js"></script>
+</html>
+
+

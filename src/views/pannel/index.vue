@@ -8,7 +8,7 @@
     <div class="row">
 
         <div class="col-lg-4 col-sm-12 col-md-6" v-for="(i, index) in services" :key="index">
-            <card link="/pannel/app" status="در حال بررسی" :image="require('@/assets/logo.png')" name="i.Id"/>
+            <card :link="`/pannel/app/${index}`" status="در حال بررسی" :image="require('@/assets/logo.png')" :name="i[0].appName" :id="index"/>
         </div>
 
         <div class="col-lg-4 col-sm-12 col-md-6">
@@ -27,6 +27,17 @@
 
   </div>
 </div>
+
+  <div>
+    <b-modal ref="myModalRef" hide-footer title="Using Component Methods">
+      <div class="d-block text-center">
+        <h3>Hello From My Modal!</h3>
+      </div>
+      <b-btn class="mt-3" variant="outline-secendory" @click="hideModal">بله</b-btn>
+        <b-btn class="mt-3" variant="outline-success" @click="hideModal">خیر</b-btn>
+    </b-modal>
+  </div>
+
 </div>
 </template>
 
@@ -52,11 +63,77 @@ export default {
   },
   data() {
       return {
+          apiUrl: 'http://service.sirang.sabinarya.com',
           services: ''
-
       }
   },
   methods: {
+      SendService: function(serviceId){
+          console.log("trriger")
+          console.log(this.services[serviceId][0])
+          localStorage.setItem("service-detail", this.services[serviceId][0] )
+      },
+      updateUser: function(desc) {
+            let user =  JSON.parse(localStorage.getItem('user'))
+            console.log(user)
+
+            this.axios({
+                method: 'put',
+                url: this.apiUrl + '/api/UserManagement', 
+                data: JSON.stringify({
+                        "Id": localStorage.getItem('user-id'),
+                        "Name": user.DisplayName,
+                        "Description": desc,
+                        "Photo": null,
+                        "UserName": user.UserName,
+                        "Email": null,
+                        "JoinDate": user.JoinDate,
+                        "EmailConfirmed": false,
+                        "IsActive": true,
+                        "SendSMS": true
+                }),
+                headers: { 
+                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    'Accept': '*/*'
+                    }
+            })
+            .then (function(response) {
+                console.log(response)               
+                localStorage.setItem('user', JSON.stringify(response.data))
+            })
+            .catch( function(err) {
+                console.log(err)
+            })
+      },
+
+    hideModal () {
+      this.$refs.myModalRef.hide()
+    },
+      deleteService: function(id) {
+          console.log(this.services[id][0].appName)
+          let alert = confirm(`آیا از حذف سرویس ${this.services[id][0].appName} مطمعن هستید؟ `)
+          if (alert) {
+              console.log(id)
+              let newServ = this.services.splice(id, 1)
+
+            let chert = new Array
+            for (let i=0; i < newServ.length; i++) {
+                chert.push(JSON.stringify(newServ[i]))
+            }
+            newServ = chert
+              let log = JSON.stringify(newServ)
+              this.updateUser(JSON.stringify(newServ))
+
+              console.log(JSON.parse(log))
+          }
+          else {
+              console.log("no")
+          }
+        // this.$refs.myModalRef.show()
+
+      },
           getAdmin: function() {
             this.axios({
             method: 'post',
@@ -86,13 +163,16 @@ export default {
         console.log(localStorage.getItem('user-id'), 'sda')
         let user = JSON.parse(localStorage.getItem('user'))
         let desc = JSON.parse(user.Description)
-        this.services = desc;
+        let chert = new Array
+        // this.services = desc;
+        console.log(desc.length)
+        // desc.splice(0,1)
+        console.log(user)
         for (let i=0; i < desc.length; i++) {
-            console.log(desc[i].id)
+            chert.push(JSON.parse(desc[i]))
         }
     
-        console.log(desc.length, 'wtf') 
-
+        this.services = chert
           },
 
           getUser: function(id) {
@@ -119,13 +199,19 @@ export default {
             })
            },
           },
+
           beforeMount: function() {
-                this.getAdmin()
-          },
-          mounted: function() {
+                // this.getAdmin()
               let Id = JSON.parse(localStorage.getItem('jwt')).nameid
               this.getUser(Id)
-}
+          },
+
+          mounted: function() {
+              this.getServices()
+            },
+         created: function() {
+                this.getAdmin()
+         }
 }
 </script>
 

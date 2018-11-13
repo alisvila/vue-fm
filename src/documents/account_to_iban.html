@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<html>
+<title>دریافت لیست کارت های شتابی</title>
+<body onload="checkSandbox()">
+ <xmp theme="cerulean" style="display:none;">
+
+###GET   /mpg/v1/clients/{clientId}/cards
+
+* **شرح:**  سرویس دریافت لیست کارت‌های شتابی ثبت شده در سامانه پیوند
+
+* **اسکوپ:**  ```card:list:get```
+
+* **رویکرد:** ```Client_Credential```
+
+````````````````
+{address}/mpg/v1/clients/{clientId}/cards?mobile={mobile}&trackId={trackId}
+````````````````
+<div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
+ https://sandbox.finnotech.ir <b> :address </b>
+</div>
+
+<div class="production-address production" style="float:right" style="display: block">
+ https://api.finnotech.ir <b> :address </b>
+ </div>
+
+
+
+#### Headers
+--------------------------------------
+مقادیر زیر باید در هدر قرار بگیرد
+````````````````
+Authorization : Bearer {Token}
+````````````````
+در صورتی که کلاینت توکن های کلاینت کردنشیال مختلفی بر روی حسابهای متعدد خود ساخته باشد , با استفاده از هر یک از آنها میتواند این سرویس را فراخوانی کند (شماره حساب مرتبط با توکن اهمیت ندارد)
+
+#### URI Parameters
+--------------------------------------
+* **clientId: ** (اجباری) شناسه کلاینت
+
+#### Query Parameters
+--------------------------------------
+* **trackId:** (اختیاری) کد پیگیری، رشته ای اختیاری با طول حداکثر ۴۰ کاراکتر شامل حرف و عدد. در صورت ارسال trackId، فراخوانی سرویس خود را با همین مقدار استعلام و پیگیری کنید.(در گزارش فراخوانی سرویس ها با همین رشته نتیجه را ببینید). در صورتیکه که این فیلد را ارسال نکنید یک رشته UUID برای این فراخوانی در نظر گرفته میشود و در پاسخ فراخوانی برگردانده میشود.
+
+  * example:  ```c0aadbb7-a7b9-4f07-987e-409eba06cfdf```
+* **mobile: ** (اجباری) شماره موبایل بدون صفر ابتدای شماره، مانند 9856321021
+
+###Results Format
+#### Successful result format (status code 200)
+
+````````````````
+{ "traceNumber": "12345"
+, "result": "0"
+, "description": "موفق"
+, "doTime": "1396/06/22 11:30:02"
+, "mobile": "9XXXXXXXXX"
+, "cardDetailList":
+  [ { "index": "1"
+    , "bankIdentify": "636214"
+    , "bankName": "بانک آینده"
+    , "lastFourDigits": "1111"
+    }
+  , { "index": "2"
+    , "bankIdentify": "603799"
+    , "bankName": "بانک ملی"
+    , "lastFourDigits": "2222"
+    }
+  , { "index": "3"
+    , "bankIdentify": "610433"
+    , "bankName": "بانک ملت"
+    , "lastFourDigits": "3333"
+    }
+  ]
+, "trackId" : "c0aadbb7-a7b9-4f07-987e-409eba06cfdf"
+, "state": "DONE"
+}
+````````````````
+
+* **traceNumber:** شماره پیگیری (برای سایر سرویس‌ها مورد نیاز است)
+* **result:** نتیجه فراخوانی سرویس، برای اطلاع از مقادیر این فیلد به [اینجا](/card-codes.html) مراجعه کنید
+* **description:** توضیحات تکمیلی در مورد نتیجه
+* **doTime:** زمان انجام تراکنش
+* **mobile:** شماره موبایل ارسال شده
+* **cardDetailList:**
+    * **index:** ایندکس شماره کارت (برای سایر سرویس‌ها مورد نیاز است)
+    * **bankIdentify:** شناسه بانک
+    * **bankName:** نام بانک
+    * **lastFourDigits:** چهار شماره آخر کارت
+* **trackId:** کد پیگیری، اگر ارسال شده باشد همان مقدار برگردانده میشود و در غیر اینصورت یک رشته تصادفی تولید و برگردانده می‌شود
+* **state:** یکی از مقادیر DONE, FAILED, UNKNOWN, PENDING که DONE موفقیت آمیز بودن فراخوانی را نشان می‌دهد
+
+#### UnSuccessful result format
+--------------------------------------
+ در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
+</xmp>
+</body>
+<script src="https://sandbox.finnoboom.com/strapdown.js"></script>
+<script src="https://sandbox.finnoboom.com/controler.js"></script>
+</html>
+

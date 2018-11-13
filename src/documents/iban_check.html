@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<html>
+<title>تبدیل شماره کارت به شماره حساب</title>
+<body onload="checkSandbox()">
+ <xmp theme="cerulean" style="display:none;">
+
+###POST  /oak/v1/clients/{client}/cardToDeposit
+* **شرح: ** دریافت شماره حساب از شماره کارت
+
+* **اسکوپ: **  ```oak:card-to-deposit:get```
+
+* **رویکرد: ** ``` Client_Credential```
+
+````````````````
+{address}/oak/v1/clients/{client}/cardToDeposit?trackId={trackId}
+````````````````
+<div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
+ https://sandbox.finnotech.ir <b> :address </b>
+</div>
+
+<div class="production-address production" style="float:right" style="display: block">
+ https://api.finnotech.ir <b> :address </b>
+ </div>
+
+#### Notes
+
+* اسامی بانک‌هایی که این سرویس برای آن‌ها قابل انجام است:
+  
+  * بانک آینده         
+  * بانک اقتصاد نوین        
+  * بانک کشاورزی      
+  * بانک سامان
+  * بانک پاسارگاد
+  * بانک صادرات
+  * بانک ملی
+  * بانک رسالت
+  * بانک دی      
+  * بانک انصار
+  * بانک ملت
+  * بانک شهر
+
+#### Headers
+مقادیر زیر باید در هدر قرار بگیرد
+````````````````
+Authorization : Bearer {Token}
+Content-Type : application/json
+````````````````
+
+#### URI Parameters
+* **clientId:** (اجباری)  شناسه کلاینت
+
+#### Query Parameters
+* **trackId:**  (اجباری) ‫ رشته ای با طول حداکثر ۴۰ کاراکتر شامل حرف و عدد. پیشنهاد ما برای trackId تولید کردن UUID است. در صورت نیاز به نتیجه یک فراخوانی میتوانید با trackId آن را فیلتر کنید. در گزارش فراخوانی سرویس فراخوانی مورد نظر را با همین کد پیگیری پیدا میکنید.
+
+  * example:  ```get-card-info-123123222-01```
+
+#### Body
+##### Example:
+````````````````
+{ 
+  "cardNumber" : "6362141033441122"
+}
+````````````````
+* **cardNumber: ** شماره کارت 
+
+
+###Results Format
+### Successful result format (status code 200)
+````````````````
+{"accounts": 
+		[{
+        "account": "0201337300000",
+        "primary": true
+    },
+    {
+        "account": "0200975200000",
+        "primary": false
+    }],
+"trackId": "e5895ffe-ff3c-47d2-a5f9-d5b2bbcd7819",
+"status": "DONE"
+}
+````````````````
+* **account: **‌ شماره حساب مربوط به شماره کارت وارد شده
+* **primary: **‌ آیا این شماره حساب اصلی کارت است یا نه(در صورتیکه بانک آینده باشد)
+* **trackId:** کد پیگیری است که با استفاده از آن میتوانید از سرویس‌های فینوتکی کارمزد را استعلام کنید.
+* **state: ** وضعیت فراخوانی سرویس
+ * DONE: فراخوانی موفق سرویس
+ * FAILED: فراخوانی ناموفق سرویس
+
+#### UnSuccessful result format
+ در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
+
+</xmp>
+</body>
+<script src="https://sandbox.finnoboom.com/strapdown.js"></script>
+<script src="https://sandbox.finnoboom.com/controler.js"></script>
+</html>
+

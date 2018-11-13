@@ -50,13 +50,13 @@
                 </tr>
                 <tr>
                     <td>شماره موبایل:</td>
-                    <td class="dir-ltr">{{formInput.appName}}</td>
+                    <td class="dir-ltr">{{formInput.mobile}}</td>
                     <td></td>
                     <td><i class="fa fa-check"></i></td>
                 </tr>
                 <tr>
                     <td>آدرس ایمیل:</td>
-                    <td class="dir-ltr">{{formInput.appName}}</td>
+                    <td class="dir-ltr">{{formInput.email}}</td>
                     <td></td>
                     <td><i class="fa fa-check"></i></td>
                 </tr>
@@ -76,7 +76,6 @@
                 </tr>
             </tbody>
             </table>
-            <a class="btn btn-finno" @click="getService">click here</a>
         </div>
         </div>
 
@@ -110,19 +109,159 @@ export default {
            webAddress: 'f',
            callBack: 'f',
            activityType: 'f',
+           mobile: '',
+           email: ''
          },
-        sectedService: ['f'],
-
+        sectedService: [],
+        s: this.$route.params.id,
+        apiUrl: 'http://service.sirang.sabinarya.com',
+        services: '',
+        service: '',
         }
     },
     methods: {
-        getService: function() {
-            console.log(this.$store.state.servicNo)
+        updateForm: function() {
+            let user = JSON.parse(localStorage.getItem('user'))
+            let {formInput, service} = this
+            formInput.appName = service.appName
+            formInput.IpAddress = service.IpAddress
+            formInput.appCode = service.appCode
+            formInput.callBack = service.callBack
+            formInput.webAddress = service.webAddress
+            formInput.activityType = service.activityType
+            formInput.companyName = service.companyName
+            formInput.mobile = user.mobile
+            formInput.email = user.email
+            this.sectedService = service.sectedService
+            console.log(user)
+            console.log("bavar kon service dar")
+            console.log(this.sectedService)
 
+        },
+
+            updateUser: function(desc) {
+            let user =  JSON.parse(localStorage.getItem('user'))
+            console.log(user)
+
+            this.axios({
+                method: 'put',
+                url: this.apiUrl + '/api/UserManagement', 
+                data: JSON.stringify({
+                        "Id": localStorage.getItem('user-id'),
+                        "Name": user.DisplayName,
+                        "Description": desc,
+                        "Photo": null,
+                        "UserName": user.UserName,
+                        "Email": null,
+                        "JoinDate": user.JoinDate,
+                        "EmailConfirmed": false,
+                        "IsActive": true,
+                        "SendSMS": true
+                }),
+                headers: { 
+                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    'Accept': '*/*'
+                    }
+            })
+            .then (function(response) {
+                console.log(response)               
+                localStorage.setItem('user', JSON.stringify(response.data))
+            })
+            .catch( function(err) {
+                console.log(err)
+            })
+      },
+
+
+          getAdmin: function() {
+            this.axios({
+            method: 'post',
+            url: 'http://service.sirang.sabinarya.com/api/account/login', 
+            data: `grant_type=password&username=aliam&password=123456&client_id=ngAuthApp`,
+            headers: { 
+                "content-type": "application/x-www-form-urlencoded",
+                "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
+                'Accept': '*/*'
+                }
+            })
+            .then (function(response) {
+                let token = response.data.access_token
+                localStorage.setItem('admin-token', token)
+                console.log(token)
+
+            })
+            .catch( function(err) {
+                console.log(err)
+            })
+        },
+        getServices: function() {
+
+        let Id = this.$store.state.jwt.nameid
+
+        console.log(localStorage.getItem('user-id'), 'sda')
+        let user = JSON.parse(localStorage.getItem('user'))
+        let desc = JSON.parse(user.Description)
+        let chert = new Array
+        // this.services = desc;
+        console.log(desc.length)
+        // desc.splice(0,1)
+        console.log(user)
+        for (let i=0; i < desc.length; i++) {
+            chert.push(JSON.parse(desc[i]))
         }
+    
+        this.services = chert
+        this.service = this.services[this.s][0]
+        console.log(this.service, '------------')
+        this.updateForm()
+          },
+
+          getUser: function(id) {
+              console.log(localStorage.getItem('admin-token'))
+              console.log('get user' + id)
+            let apiUrl = "http://service.sirang.sabinarya.com"
+               
+            this.axios({
+                method: 'get',
+                url: apiUrl + '/api/UserManagement/' + id,
+                headers: { 
+                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    'Accept': '*/*'
+                }
+            })
+            .then (function(response) {
+              console.log(response.data)
+                localStorage.setItem('user', JSON.stringify(response.data))
+            })
+            .catch( function(err) {
+                console.log(err)
+            })
+           },
+          },
+
+          beforeMount: function() {
+                // this.getAdmin()
+              let Id = JSON.parse(localStorage.getItem('jwt')).nameid
+              this.getUser(Id)
+          },
+
+          mounted: function() {
+              this.getServices()
+            },
+         created: function() {
+                this.getAdmin()
+         }
+
+
+
 
     }
-}
+
 </script>
 <style>
 

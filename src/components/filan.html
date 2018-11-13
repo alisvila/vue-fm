@@ -1,26 +1,140 @@
-<tbody>
-    <tr>
-        <td>برداشت وجه از</td>
-        <td class="dir-ltr">oak:withdrawal-from:execute</td>
-        <td><i class="fa fa-check"></i></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>مانده حساب</td>
-        <td class="dir-ltr">oak:balance:get</td>
-        <td><i class="fa fa-check"></i></td>
-        <td><i class="fa fa-check"></i></td>
-    </tr>
-    <tr>
-        <td>مانده و 100 گردش آخر حساب</td>
-        <td class="dir-ltr">oak:statement:get</td>
-        <td><i class="fa fa-check"></i></td>
-        <td><i class="fa fa-check"></i></td>
-    </tr>
-    <tr>
-        <td>واریز وجه به</td>
-        <td class="dir-ltr">oak:transfer-to:execute</td>
-        <td></td>
-        <td><i class="fa fa-check"></i></td>
-    </tr>
-</tbody>
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<html>
+<title>تبدیل شماره کارت به شبا </title>
+<body onload="checkSandbox()">
+<xmp theme="cerulean" style="display:none;">
+  
+###GET  /oak/v1/clients/{clientId}/iban
+
+* **شرح: ** سرویس دریافت شماره شبا از روی شماره کارت
+
+* **اسکوپ: **  ```oak:deposit-to-iban:get```
+
+* **رویکرد: ** ```CLIENT_CREDENTIAL```
+
+
+``````````````
+{address}/oak/v1/clients/{clientId}/iban?trackId={trackId}&card={card}
+``````````````
+<div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
+ https://sandbox.finnotech.ir <b> :address </b>
+</div>
+
+<div class="production-address production" style="float:right" style="display: block">
+ https://api.finnotech.ir <b> :address </b>
+ </div>
+
+#### Note
+
+* اسامی بانک‌هایی که این سرویس برای آن‌ها قابل انجام است:
+  
+  * بانک آینده         
+  * بانک اقتصاد نوین        
+  * بانک کشاورزی      
+  * بانک سامان
+  * بانک صادرات
+  * بانک ملی
+  * بانک رسالت
+  * بانک دی      
+  * بانک انصار
+
+
+#### Headers
+مقادیر زیر باید در هدر قرار بگیرد
+````````````````
+Authorization : Bearer {Token}
+````````````````
+
+#### URI Parameters
+* **clientId: ** (اجباری) شناسه کلاینت
+
+#### Query Parameters
+* ** trackId: ** (اختیاری) &#x202b; رشته ای با طول حداکثر ۲۰ کاراکتر شامل حرف و عدد. پیشنهاد ما برای trackId تولید کردن UUID است. در صورت نیاز به نتیجه یک فراخوانی میتوانید با trackId آن را فیلتر کنید. در گزارش فراخوانی سرویس فراخوانی مورد نظر را با همین کد پیگیری پیدا میکنید.
+  * example:  ```get-IBAN-status-010```
+
+* **card: **(اجباری) شماره کارتی که قصد دریافت شماره شبا آن را دارید.
+
+
+#### Request Example
+``````````````
+https://api.finnotech.ir/oak/v1/clients/testClient/iban?trackId=get-IBAN-statsus-010&bank=8&card=6037701612562167
+``````````````
+
+
+###Results Format
+#### Successful result format (status code 200)
+````````````````
+{
+    "IBAN": "IR970660000000201321649114"
+   , "deposit": ""
+   , "card": "5029381012589212"
+   , "bankName": "دی"
+   , "accountDescription": "حساب فعال است"
+   , "accountOwners": [
+        {
+            "firstName": "رامین"
+           ,"lastName": "ناصری"
+        }
+    ],
+   , "accountComment": "معتبر براي  واريز"
+   , "status": "DONE"
+   , "trackId": "ea66c4d4-9e4c-4819-96ef-71b9aba6c47a"
+}
+````````````````
+* اگر در پاسخ سرویس مقادیر accountOwners, bankName و accountComment خالی بود، سرویس استعلام شبا برای شبای تولیدی پاسخی برنگردانده است.
+
+* **IBAN: ** شماره شبا محاسبه شده
+* **deposit: ** شماره حساب 
+* **card: ** شماره کارت ارسال شده
+* **bankName: ** نام بانک
+* **accountDescription:**  شرح حساب
+* **accountComment:**
+* **accountOwners:** آرایه ای از صاحبان حساب
+  * **firstName: ** نام
+  * **lastName: ** نام خانوادگی
+* **status: ** وضعیت فراخوانی سرویس
+ * DONE: فراخوانی موفق سرویس
+ * FAILED: فراخوانی ناموفق سرویس
+* **trackId: ** کد پیگیری، اگر ارسال شده باشد همان مقدار برگردانده میشود و در غیر اینصورت یک رشته تصادفی تولید و برگردانده میشود
+
+#### UnSuccessful result format
+````````````````
+  { "code": -1 (non zero integer)
+  , "message": "Unsuccessful Message"
+  , "farsi_message": "پیام ناموفق"
+  }
+````````````````
+در صورتی که کد بانک ارسالی نامعتبر باشد با خطای زیر مواجه خواهید شد:
+
+````````````````
+  { "code": 1
+  , "message": "invalid bank code"
+  , "farsi_message": "کد بانک وارد شده نامعتبر است"
+  }
+````````````````
+در صورتی که کد بانک ارسالی با کارت وارد شده هماهنگ نباشد یا پارامتر card را برای بانک‌های غیر از بانک‌های ذکر شده در بالا ارسال نمایید با خطای زیر مواجه خواهید شد:
+
+````````````````
+    { "destCard": "6362-14xx-xxxx-4596"
+    , "name": ""
+    , "status": "FAILED"
+    , "result": "999"
+    , "description": "خطای کلی سامانه"
+    , "doTime": "1397/03/01 12:59:05"
+    , "account": ""
+    , "trackId": "d0f9607d-f696-4062-b710-4fc1fc0297c7"
+    }
+````````````````
+
+ در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
+
+</xmp>
+</body>
+<script src="https://sandbox.finnoboom.com/strapdown.js"></script>
+<script src="https://sandbox.finnoboom.com/controler.js"></script>
+</html>
+

@@ -23,32 +23,32 @@
         <div class="list-logo-customer">
           <ul>
               <li>
-                  <a href="http://www.izbank.ir/" class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_4_min.png"
+                  <a href="http://www.izbank.ir/" class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_4_min.png"
                           width="57" height="56" alt="بانک ایران زمین">
                   </a>
               </li>
               <li>
-                  <div class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_1_min.png" width="57"
+                  <div class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_1_min.png" width="57"
                           height="56" alt="بانک آینده">
                   </div>
               </li>
               <li>
-                  <div class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_2_min.png" width="57"
+                  <div class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_2_min.png" width="57"
                           height="56" alt="بانک اقتصاد نوین">
                   </div>
               </li>
               <li>
-                  <div class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_5_min.png" width="57"
+                  <div class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_5_min.png" width="57"
                           height="56" alt="بانک انصار">
                   </div>
               </li>
               <li>
-                  <a href="http://www.bank-day.ir/" class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_3_min.png"
+                  <a href="http://www.bank-day.ir/" class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_3_min.png"
                           width="57" height="56" alt="بانک دی">
                   </a>
               </li>
               <li>
-                  <div class="llc llc-item"><img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_6_min.png" width="57"
+                  <div class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_6_min.png" width="57"
                           height="56" alt="نوآوران امین">
                   </div>
               </li>

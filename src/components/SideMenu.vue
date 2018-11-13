@@ -32,7 +32,7 @@
         <li><a  class="nav-link" href="pdf/tashim.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i><span>حساب میانی و تسهیم</span></a></li>
         <li><a  class="nav-link" href="#sample-code"><i class="fa fa-code"></i><span>نمونه کد</span></a></li> -->
     </ul>
-    <p>{{year}}تمامی حقوق و اینا</p>
+    <p class="copyright">تمام حقوق این سایت برای شرکت سابین تجارت آریا محفوظ می‌باشد.</p>
 </nav>
 </div>
 
@@ -57,6 +57,10 @@ export default {
 
 
 <style scoped>
+.copyright {
+    font-size: 14px;
+    direction: rtl;
+}
 .navbar-brand {
     margin: 0 auto;
 }

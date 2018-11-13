@@ -13,30 +13,41 @@
                         back-button-text="قبلی"
                         finish-button-text="دخیره"
                         title="افزودن برنامه جدید"
-                        subtitle="فیلان">
+                        subtitle="">
         <tab-content title="اطلاعات عمومی"
-                    icon="ti-user" :before-change="beforeTabSwitch">
-
+                    icon="ti-user" 
+                    :before-change="validateDemo"
+                    >
+                    
         <div class="row">
         <div class = "col-xs-12 col-md-6 right-column" >
         <div class="col-md-12 mb-3">
         <label for="validationTooltip01">نام برنامه</label>
-        <input v-model="formInput.appName" type="text" class="form-control" id="validationTooltip01" placeholder="نامی که به کاربر نهایی نمایش داده میشود" value="Mark" required>
+                    <p class="sub-text">شناسه منحصر به فرد برنامه‌ی شما که برای فراخوانی سرویس‌ها استفاده میشود</p>
+        <input v-model="formInput.appName" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
             </div>
         </div>
 
+
+
+
         <div class="col-md-12 mb-3">
-            <label for="validationTooltip01">شناسه برنامه</label>
-            <input v-model="formInput.appCode" type="text" class="form-control" id="validationTooltip01" placeholder="شناسه منحصر به فرد برنامه‌ی شما که برای فراخوانی سرویس‌ها استفاده میشود" value="Mark" required>
+        <label for="validationTooltip01">آدرس IP</label>
+                    <p class="sub-text"></p>
+        <input v-model="formInput.IpAddress" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
             </div>
         </div>
+
+
+
                 <div class="col-md-12 mb-3">
             <label for="validationTooltip01">آدرس وب سایت برنامه</label>
-            <input v-model="formInput.webAddress" type="text" class="form-control" id="validationTooltip01" placeholder="این آدرس در صفحه دسترسی به کاربر نمایش داده میشود" value="Mark" required>
+            <p class="sub-text">این آدرس در صفحه دسترسی به کاربر نمایش داده میشود</p>
+            <input v-model="formInput.webAddress" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
             </div>
@@ -44,7 +55,8 @@
                     
         <div class="col-md-12 mb-3">
             <label for="validationTooltip01">آدرس برگشت داده</label>
-            <input v-model="formInput.callBack" type="text" class="form-control" id="validationTooltip01" placeholder="کاربر پس از اعطای دسترسی به این آدرس هدایت خواهد شد (تنها برای رویکرد Authorization_Code)" value="Mark" required>
+            <p class="sub-text">کاربر پس از اعطای دسترسی به این آدرس هدایت خواهد شد (تنها برای رویکرد</p>
+            <input v-model="formInput.callBack" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
             </div>
@@ -52,39 +64,49 @@
         </div>
 
         <div class = "col-xs-12 col-md-6 right-column" >
-        <div class="col-md-12 mb-3">
-        <label for="validationTooltip01">آدرس IP</label>
-        <input v-model="formInput.IpAddress" type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="Mark" required>
+
+
+
+                    <div class="col-md-12 mb-3">
+            <label for="validationTooltip01">شناسه برنامه</label>
+            <p class="sub-text">شناسه منحصر به فرد برنامه‌ی شما که برای فراخوانی سرویس‌ها استفاده میشود</p>
+            <input v-model="formInput.appCode" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
             </div>
         </div>
 
+
+
         <div class="col-md-12 mb-3">
             <label for="validationTooltip01">نام شرکت</label>
-            <input v-model="formInput.companyName" type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="Mark" required>
+                        <p class="sub-text"></p>
+
+            <input v-model="formInput.companyName" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
             </div>
         </div>
             <div class="col-md-12 mb-3">
             <label for="validationTooltip01">نوع فعالیت</label>
-            <textarea v-model="formInput.activityType" rows="5" type="text" class="form-control" id="validationTooltip01" placeholder="وضیحات مختصری در مورد فعالیت برنامه شما" value="Mark" required />
+                        <p class="sub-text">توضیحات مختصری در مورد فعالیت برنامه شما</p>
+
+            <textarea v-model="formInput.activityType" rows="5" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required />
             <div class="valid-tooltip">
                 Looks good!
             </div>
         </div>
-                    
         </div>
 
         </div>
+        <Alert v-bind:type="type" v-bind:msg="msg" v-if="alert"></Alert>                    
 
                     
                     
 
         </tab-content>
         <tab-content title="سرویس ها"
-                    icon="ti-settings">
+                    icon="ti-settings" :before-change="validateSecondStep">
 
 
 
@@ -107,18 +129,23 @@
             </div>
 
         </div>
+
     </div>
 
     <div class="col-xs-12 col-md-6">
         <div class="deposit-requirement-wrapper"></div>
     </div>
+        <Alert v-bind:type="type" v-bind:msg="msg" v-if="alert"></Alert>                    
 
 
 
 
         </tab-content>
         <tab-content title="ذخیره"
-                    icon="ti-check">
+                    icon="ti-check"
+                    
+                    :before-change="validateThirdStep"
+                    >
         
         <div class="summary">
             <div class="service-summary">
@@ -219,8 +246,7 @@
 
             </div>
         </div>
-
-
+                <Alert v-bind:type="type" v-bind:msg="msg" v-if="alert"></Alert>                    
 
         </tab-content>
     </form-wizard>
@@ -237,6 +263,7 @@
 import {FormWizard, TabContent} from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import SideMenu from '@/components/SideMenu.vue'
+import Alert from '@/components/alert.vue'
 import TopMenu from '@/components/TopMenu.vue'
 import allServices from '@/assets/services.json'
 
@@ -247,10 +274,14 @@ export default {
         FormWizard,
         TabContent,
         SideMenu,
-        TopMenu
+        TopMenu,
+        Alert
         },
     data() {
        return {
+           alert: false,
+           msg: 'لطفا تمامی فیلد ها را با دقت پر نمایید',
+           type: 'alert-danger',
          formInput: {
            user: '',
            appName: '',
@@ -287,15 +318,15 @@ export default {
        },
        methods: {
            submitService: function() {
+               let {$router} = this
             let admin = localStorage.getItem('admin-token')
             let number = this.$store.state.servicNo;
             // let admin = this.$store.state.admin;
             let userName = this.$store.state.userName;
             const {formInput} = this
             let user =  JSON.parse(localStorage.getItem('user'))
-            let jsons = new Array();
-
-            let payload = {
+            console.log(JSON.parse(user.Description))
+            let payload = [{
                                 "id": number + 1,
                                 "user": formInput.user,
                                 "appName": formInput.appName,
@@ -306,8 +337,10 @@ export default {
                                 "callBackUrl": formInput.callBack,
                                 "activityType": formInput.activityType,
                                 "sectedService": this.sectedService
-            }
-            let desc = user.Description.concat(JSON.stringify(payload))
+            }]
+            let jsons = JSON.parse(user.Description).concat(JSON.stringify(payload))
+            let desc = JSON.stringify(jsons)
+            console.log(desc)
             this.axios({
                 method: 'put',
                 url: this.apiUrl + '/api/UserManagement', 
@@ -333,6 +366,7 @@ export default {
             .then (function(response) {
                 console.log(response)               
                 localStorage.setItem('user', JSON.stringify(response.data))
+                $router.push('/pannel')
             })
             .catch( function(err) {
                 console.log(err)
@@ -359,7 +393,6 @@ export default {
             })
             .catch( function(err) {
                 // getAdmin()
-
                 console.log(err)
             })
            },
@@ -368,14 +401,60 @@ export default {
             beforeTabSwitch: function(){
           return true;
         },
-         validateFirstStep() {
-           return new Promise((resolve, reject) => {
-             this.$refs.ruleForm.validate((valid) => {
-               resolve(valid);
-             });
-           })
+        validateDemo: function() {
+            return true
+        },
+        validateSecondStep() {
+            console.log(this.sectedService.length)
+            if (this.sectedService != null && this.sectedService.length >= 1) {
+                this.alert = false;
+                return true
 
+            }
+            else {
+                this.msg="یکی از سرویس ها را انتخواب نمایید"
+                this.alert = true;
+                return false
+            }
+        },
+         validateFirstStep() {
+             let {formInput} = this
+             if (
+                formInput.appName != null && formInput.appName.length > 4 &&
+                formInput.IpAddress != null &&
+                formInput.appCode != null &&
+                formInput.companyName != null &&
+                formInput.webAddress != null &&
+                formInput.callBack != null &&
+                formInput.activityType != null
+                )
+                {
+                    this.alert = false;
+                    return true 
+
+                    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(formInput.IpAddress)) {
+                        this.msg = "آدرس IP اشتباه است"
+                    }
+                    else {
+                    }
+                }
+                else {
+                    this.alert = true;
+                    return false
+                }
          },
+         validateThirdStep: function() {
+             if(this.formInput.privacy) {
+                this.alert = false
+                 return true
+             }
+             else {
+                 this.msg = "لطفا شرایط و قوانین را بخوانید "
+                 this.alert = true
+                 return false
+             }
+         },
+         
         getAdmin: function() {
             let {admin} = this
             this.axios({
@@ -413,6 +492,11 @@ export default {
 </script>
 
 <style>
+.sub-text {
+    font-size: 11px;
+    color: gray;
+    margin: 0;
+}
 
 .pannel-home {
     padding: 80px 225px 0 10px;
@@ -451,6 +535,7 @@ export default {
 .service-summary {
     border: 1px solid #ff9900;
     padding: 18px 0px;
+    margin: 20px;
 }
 
 .info {

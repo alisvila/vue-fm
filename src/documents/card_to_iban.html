@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<html>
+<title>استعلام شماره شبا</title>
+<body onload="checkSandbox()">
+ <xmp theme="cerulean" style="display:none;">
+
+###GET   /oak/v1/clients/{clientId}/ibanInquiry
+* **شرح: **  سرویس اطلاعات شبا
+
+* **اسکوپ: **  ```oak:iban-inquiry:get```
+
+* **رویکرد: ** ```Client-Credential```
+
+````````````````
+{address}/oak/v1/clients/{clientId}/ibanInquiry?trackId={trackId}&iban={iban}
+````````````````
+<div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
+ https://sandbox.finnotech.ir <b> :address </b>
+</div>
+
+<div class="production-address production" style="float:right" style="display: block">
+ https://api.finnotech.ir <b> :address </b>
+ </div>
+
+
+#### Headers
+مقادیر زیر باید در هدر قرار بگیرد
+````````````````
+Authorization : Bearer {Token}
+````````````````
+&#x202b; در صورتی که کلاینت توکن های کلاینت کردنشیال مختلفی بر روی حسابهای متعدد خود ساخته باشد , با استفاده از هر یک از آنها میتواند این سرویس را فراخوانی کند (شماره حساب مرتبط با توکن اهمیت ندارد)
+
+#### URI Parameters
+* **clientId :**  (اجباری) شناسه کلاینت
+
+#### Query Parameters
+* **trackId:**  اختیاری (string)  &#x202b; کد پیگیری، رشته ای اختیاری با طول حداکثر ۴۰ کاراکتر شامل حرف و عدد. در صورت ارسال trackId، فراخوانی سرویس خود را با همین مقدار استعلام و پیگیری کنید.(در گزارش فراخوانی سرویس ها با همین رشته نتیجه را ببینید). در صورتیکه که این فیلد را ارسال نکنید یک رشته UUID برای این فراخوانی در نظر گرفته میشود و در پاسخ فراخوانی برگردانده میشود.
+  * example:  ```jh238dfkjbh238sdfge```
+* **iban:**  شماره شبای معتبر که باید یک رشته به طول ۲۶ کاراکتر باشد
+  * example:  ```IR250620000000200935673008```
+
+###Results Format
+#### Successful result format (status code 200)
+````````````````
+      {
+        "requestedIBAN": "IR310620000000201648783000",
+        "bankName": "بانک آینده",
+        "accountNumber": "0201648783000",
+        "accountStatus": "02",
+        "accountDescription": "حساب فعال است",
+        "accountComment": "",
+        "accountOwners": [
+          {
+            "firstName": "اصغر",
+            "lastName": "فرهادی"
+          }
+        ],
+        "paymentCode": "0",
+        "paymentCodeValid": "0",
+        "alertCode": "00",
+        "errorDescription": "بدون خطا",
+        "trackId": "19cd7c2d-cdf0-476f-b03a-cab61efc7fa0",
+        "state": "DONE"
+      }
+````````````````
+* **requestedIBAN:** شماره شبا
+* **bankName:** نام بانک
+* **accountNumber:** شماره حساب
+* **accountStatus:** میتواند مقادیر زیر را بگیرد
+  * **‌02 :** حساب فعال است
+  * **‌03 :** حساب مسدود با قابلیت واریز
+  * **‌04 :** حساب مسدود بدون قابلیت واریز
+  * **‌05 :** حساب راکد است
+  * **‌06 :** بروز خطادر پاسخ دهی , شرح خطا در فیلد توضیحات است
+  * **‌07 :** سایر موارد
+* **accountDescription:**  شرح حساب
+* **accountComment:**
+* **accountOwners:** آرایه ای از صاحبان حساب
+  * **firstName: ** نام
+  * **lastName: ** نام خانوادگی
+* **alertCode:** میتواند مقادیر زیر را بگیرد
+  * **‌00 :** بدون خطا
+  * **‌01 :** Invalid IBAN
+  * **‌02 :** Invalid Request
+  * **‌03 :** Message Authentication Failed
+  * **‌04 :** Invalid Bank Bic Code
+  * **‌05 :** Destination Time Out
+  * **‌06 :** Destination Not Found
+* **trackId: **‌ کد پیگیری، اگر ارسال شده باشد همان مقدار برگردانده میشود و در غیر اینصورت یک رشته تصادفی تولید و برگردانده میشود
+* **state: **‌ وضعیت فراخوانی که میتواند یکی از موارد DONE|FAILED باشد
+
+#### UnSuccessful result format
+ در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
+
+</xmp>
+</body>
+<script src="https://sandbox.finnoboom.com/strapdown.js"></script>
+<script src="https://sandbox.finnoboom.com/controler.js"></script>
+</html>
+

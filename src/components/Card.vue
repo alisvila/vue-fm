@@ -14,7 +14,7 @@
         <i class="fa fa-trash-o"></i>
 
         <a href="/pannel/new" v-if="isNew" class="btn btn-finno btn-small confirm hidden">افزودن</a>
-        <a href="/pannel/delte" v-else class="btn btn-finno btn-small confirm hidden">حذف شود؟</a>
+        <a @click="deleteService" v-else class="btn btn-finno btn-small confirm hidden" >حذف شود؟</a>
         </div>
 </div>
 </div>
@@ -29,8 +29,20 @@ export default {
     image: String,
     link: String,
     name: String,
-    isNew: Boolean
+    isNew: Boolean,
+    id: Number
   },
+  methods: {
+    service: function() {
+      let {id} = this
+      this.$parent.SendService(id)
+    },
+    deleteService: function() {
+      console.log(this.id, "id dar inja")
+      let {id} = this
+      this.$parent.deleteService(id)
+    }
+  }
 }
 </script>
 
