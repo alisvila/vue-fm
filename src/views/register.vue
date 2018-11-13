@@ -29,22 +29,30 @@
 
                 <div class="checkbox mb-3">
                 </div>
-                <button class="btn btn-lg btn-finno btn-block" type="register" @click="regisetr">ثبت نام</button>
+                <button class="btn btn-lg btn-finno btn-block" type="register">ثبت نام</button>
             </form>
         </div>
     </div>
+        <div class="alert-wrapper">
+            <Alert v-bind:type="type" v-bind:msg="msg" v-if="alert"></Alert>                    
+        </div>
 </div>
 
 </template>
 <script>
-export default {
+import Alert from '@/components/alert.vue'
 
+
+export default {
     name: 'login',
+    components: {
+        Alert
+    },
     data() {
         return {
             apiUrl: 'http://service.sirang.sabinarya.com',
             alert: false,
-            type: "",
+            type: "alert-danger",
             msg: "",
             fname: "",
             lname: "",
@@ -74,18 +82,20 @@ export default {
             .then (function(response) {
                 let token = response.data.access_token
                 localStorage.setItem('admin-token', token)
-                console.log(token)
+                // console.log(token)
 
             })
             .catch( function(err) {
                 console.log(err)
+
+                
             })
         },
         register: function() {
-            let {$router} = this
+            let {$router, alert, msg} = this
             // console.log(this.$store.state.admin)
-            let admin = "bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI0NiIsInVuaXF1ZV9uYW1lIjoiYWxpYW0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiI5Y2JiY2E4Mi0zYTViLTRhNDktODIxNS05YTg2NGIyZWU5NjUiLCJyb2xlIjoi2YXYr9uM2LEiLCJTZXNzaW9uSUQiOiJmMzNmNjdjYmFhMTI0ZmExYTJhZTc3NjA5NzhjNTYxMSIsIkJ1c2luZXNzUm9sZSI6IjEiLCJQZXJtaXNzaW9ucyI6WyIxMTAiLCIxMTEiLCIxMTIiLCIxMTMiLCIxMTQiLCIxMTUiLCIxMTYiLCIxMTciLCIxMTgiLCIxMTkiLCIxMjAiLCIxMjEiLCIyMDAiLCIyMDEiLCIyMDIiLCIyMDMiLCIyMDQiLCIyMDUiLCIyMDYiLCIyMDciLCIyMDgiLCIyMDkiLCIyMTAiLCIyMjEiLCIyMjIiLCIyMjMiLCIyMjQiLCIyMjUiLCIyMjYiLCIyMjciLCIyMjgiLCIyMjkiLCIyMzAiLCIyMzEiLCIyMzIiLCIyMzMiLCIyMzQiLCIyMzUiLCIyMzYiLCIyMzciLCIyMzgiLCIyMzkiLCIyNDAiLCIyNDEiLCIyNDIiLCIyNDMiLCIyNDQiLCIyNDUiLCIyNDYiLCIyNDciLCIyNDgiLCIyNDkiLCIyNTAiLCIyNTEiLCIyNTIiLCIzMDAiLCIzMDEiLCIzMDIiLCIzMDMiLCIzMTAiLCIzMTEiLCIzMTIiLCIzMTMiLCIzMTQiLCIzMTUiLCIzMTYiLCIzMTciLCIzMTgiLCIzMTkiLCIzMjAiLCIzMjEiLCIzMjIiLCIzMjMiLCIzMjQiLCIzMjUiLCIzMjYiLCIzMjciLCIzMjgiLCIzMjkiLCIzMzAiLCIzMzEiLCIzMzIiLCIzMzMiLCIzMzQiLCIzMzUiLCIzMzYiLCIzMzciLCIzMzgiXSwiRGlzcGxheU5hbWUiOiJhbGkiLCJpc3MiOiJNQmlzc3VlciIsImF1ZCI6IjQxNGUxOTI3YTM4ODRmNjhhYmM3OWY3MjgzODM3ZmQxIiwiZXhwIjoxNTU5Mjg5OTkwLCJuYmYiOjE1NDIwMDk5OTB9.5BIRb28bf5Mn1SuwaFd3UZa8T9LrIoHhcI25nEomC8Q"
-            let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI0NiIsInVuaXF1ZV9uYW1lIjoiYWxpYW0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiI5Y2JiY2E4Mi0zYTViLTRhNDktODIxNS05YTg2NGIyZWU5NjUiLCJyb2xlIjoi2YXYr9uM2LEiLCJTZXNzaW9uSUQiOiJmMzNmNjdjYmFhMTI0ZmExYTJhZTc3NjA5NzhjNTYxMSIsIkJ1c2luZXNzUm9sZSI6IjEiLCJQZXJtaXNzaW9ucyI6WyIxMTAiLCIxMTEiLCIxMTIiLCIxMTMiLCIxMTQiLCIxMTUiLCIxMTYiLCIxMTciLCIxMTgiLCIxMTkiLCIxMjAiLCIxMjEiLCIyMDAiLCIyMDEiLCIyMDIiLCIyMDMiLCIyMDQiLCIyMDUiLCIyMDYiLCIyMDciLCIyMDgiLCIyMDkiLCIyMTAiLCIyMjEiLCIyMjIiLCIyMjMiLCIyMjQiLCIyMjUiLCIyMjYiLCIyMjciLCIyMjgiLCIyMjkiLCIyMzAiLCIyMzEiLCIyMzIiLCIyMzMiLCIyMzQiLCIyMzUiLCIyMzYiLCIyMzciLCIyMzgiLCIyMzkiLCIyNDAiLCIyNDEiLCIyNDIiLCIyNDMiLCIyNDQiLCIyNDUiLCIyNDYiLCIyNDciLCIyNDgiLCIyNDkiLCIyNTAiLCIyNTEiLCIyNTIiLCIzMDAiLCIzMDEiLCIzMDIiLCIzMDMiLCIzMTAiLCIzMTEiLCIzMTIiLCIzMTMiLCIzMTQiLCIzMTUiLCIzMTYiLCIzMTciLCIzMTgiLCIzMTkiLCIzMjAiLCIzMjEiLCIzMjIiLCIzMjMiLCIzMjQiLCIzMjUiLCIzMjYiLCIzMjciLCIzMjgiLCIzMjkiLCIzMzAiLCIzMzEiLCIzMzIiLCIzMzMiLCIzMzQiLCIzMzUiLCIzMzYiLCIzMzciLCIzMzgiXSwiRGlzcGxheU5hbWUiOiJhbGkiLCJpc3MiOiJNQmlzc3VlciIsImF1ZCI6IjQxNGUxOTI3YTM4ODRmNjhhYmM3OWY3MjgzODM3ZmQxIiwiZXhwIjoxNTU5Mjg5OTkwLCJuYmYiOjE1NDIwMDk5OTB9.5BIRb28bf5Mn1SuwaFd3UZa8T9LrIoHhcI25nEomC8Q"
+            // let admin = "bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI0NiIsInVuaXF1ZV9uYW1lIjoiYWxpYW0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiI5Y2JiY2E4Mi0zYTViLTRhNDktODIxNS05YTg2NGIyZWU5NjUiLCJyb2xlIjoi2YXYr9uM2LEiLCJTZXNzaW9uSUQiOiJmMzNmNjdjYmFhMTI0ZmExYTJhZTc3NjA5NzhjNTYxMSIsIkJ1c2luZXNzUm9sZSI6IjEiLCJQZXJtaXNzaW9ucyI6WyIxMTAiLCIxMTEiLCIxMTIiLCIxMTMiLCIxMTQiLCIxMTUiLCIxMTYiLCIxMTciLCIxMTgiLCIxMTkiLCIxMjAiLCIxMjEiLCIyMDAiLCIyMDEiLCIyMDIiLCIyMDMiLCIyMDQiLCIyMDUiLCIyMDYiLCIyMDciLCIyMDgiLCIyMDkiLCIyMTAiLCIyMjEiLCIyMjIiLCIyMjMiLCIyMjQiLCIyMjUiLCIyMjYiLCIyMjciLCIyMjgiLCIyMjkiLCIyMzAiLCIyMzEiLCIyMzIiLCIyMzMiLCIyMzQiLCIyMzUiLCIyMzYiLCIyMzciLCIyMzgiLCIyMzkiLCIyNDAiLCIyNDEiLCIyNDIiLCIyNDMiLCIyNDQiLCIyNDUiLCIyNDYiLCIyNDciLCIyNDgiLCIyNDkiLCIyNTAiLCIyNTEiLCIyNTIiLCIzMDAiLCIzMDEiLCIzMDIiLCIzMDMiLCIzMTAiLCIzMTEiLCIzMTIiLCIzMTMiLCIzMTQiLCIzMTUiLCIzMTYiLCIzMTciLCIzMTgiLCIzMTkiLCIzMjAiLCIzMjEiLCIzMjIiLCIzMjMiLCIzMjQiLCIzMjUiLCIzMjYiLCIzMjciLCIzMjgiLCIzMjkiLCIzMzAiLCIzMzEiLCIzMzIiLCIzMzMiLCIzMzQiLCIzMzUiLCIzMzYiLCIzMzciLCIzMzgiXSwiRGlzcGxheU5hbWUiOiJhbGkiLCJpc3MiOiJNQmlzc3VlciIsImF1ZCI6IjQxNGUxOTI3YTM4ODRmNjhhYmM3OWY3MjgzODM3ZmQxIiwiZXhwIjoxNTU5Mjg5OTkwLCJuYmYiOjE1NDIwMDk5OTB9.5BIRb28bf5Mn1SuwaFd3UZa8T9LrIoHhcI25nEomC8Q"
+            // let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiI0NiIsInVuaXF1ZV9uYW1lIjoiYWxpYW0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiI5Y2JiY2E4Mi0zYTViLTRhNDktODIxNS05YTg2NGIyZWU5NjUiLCJyb2xlIjoi2YXYr9uM2LEiLCJTZXNzaW9uSUQiOiJmMzNmNjdjYmFhMTI0ZmExYTJhZTc3NjA5NzhjNTYxMSIsIkJ1c2luZXNzUm9sZSI6IjEiLCJQZXJtaXNzaW9ucyI6WyIxMTAiLCIxMTEiLCIxMTIiLCIxMTMiLCIxMTQiLCIxMTUiLCIxMTYiLCIxMTciLCIxMTgiLCIxMTkiLCIxMjAiLCIxMjEiLCIyMDAiLCIyMDEiLCIyMDIiLCIyMDMiLCIyMDQiLCIyMDUiLCIyMDYiLCIyMDciLCIyMDgiLCIyMDkiLCIyMTAiLCIyMjEiLCIyMjIiLCIyMjMiLCIyMjQiLCIyMjUiLCIyMjYiLCIyMjciLCIyMjgiLCIyMjkiLCIyMzAiLCIyMzEiLCIyMzIiLCIyMzMiLCIyMzQiLCIyMzUiLCIyMzYiLCIyMzciLCIyMzgiLCIyMzkiLCIyNDAiLCIyNDEiLCIyNDIiLCIyNDMiLCIyNDQiLCIyNDUiLCIyNDYiLCIyNDciLCIyNDgiLCIyNDkiLCIyNTAiLCIyNTEiLCIyNTIiLCIzMDAiLCIzMDEiLCIzMDIiLCIzMDMiLCIzMTAiLCIzMTEiLCIzMTIiLCIzMTMiLCIzMTQiLCIzMTUiLCIzMTYiLCIzMTciLCIzMTgiLCIzMTkiLCIzMjAiLCIzMjEiLCIzMjIiLCIzMjMiLCIzMjQiLCIzMjUiLCIzMjYiLCIzMjciLCIzMjgiLCIzMjkiLCIzMzAiLCIzMzEiLCIzMzIiLCIzMzMiLCIzMzQiLCIzMzUiLCIzMzYiLCIzMzciLCIzMzgiXSwiRGlzcGxheU5hbWUiOiJhbGkiLCJpc3MiOiJNQmlzc3VlciIsImF1ZCI6IjQxNGUxOTI3YTM4ODRmNjhhYmM3OWY3MjgzODM3ZmQxIiwiZXhwIjoxNTU5Mjg5OTkwLCJuYmYiOjE1NDIwMDk5OTB9.5BIRb28bf5Mn1SuwaFd3UZa8T9LrIoHhcI25nEomC8Q"
 
 
             // console.log(this.jwtDec(token))
@@ -94,7 +104,7 @@ export default {
                 url: this.apiUrl + '/api/UserManagement', 
                 data: {
                     Name: this.fname + " " + this.lname,
-                    username: this.fname + this.lname + "finno",
+                    username: this.mobile,
                     password: this.password,
                     Mobile: this.mobile,
                     Email: this.email,
@@ -112,15 +122,15 @@ export default {
                     }
                 })
                 .then (function(response) {
-
-
+                    alert = false
                     $router.push('/login/')
 
                     // this.$store.state.userId = response.Id
                     // console.log(response)
                 })
                 .catch( function(err) {
-                    console.log(err)
+                    msg = err.response.data
+                    alert = true
                 })
 
 
@@ -140,6 +150,7 @@ export default {
 </script>
 
 <style scoped>
+
 .login-wrapper {
     margin: 15% auto;
     width: 445px;
@@ -154,5 +165,13 @@ export default {
 
 .logo {
     width: 96%;
+}
+
+.alert-wrapper {
+
+    position: inherit;
+    margin: 0 auto;
+    width: 445px;
+    border-radius: 1px;
 }
 </style>

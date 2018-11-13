@@ -17,9 +17,6 @@
     </div>
     <div class="row">
               <div class="col-lg-4 col-sm-12 col-md-6">
-
-          <a class="btn btn-block" @click="getServices" style="color: red;!important">getServices</a>
-          <a class="btn btn-block" @click="getUser" style="color: red;!important">getUser</a>
     </div>
         </div>
 
@@ -49,7 +46,7 @@ import SideMenu from '@/components/SideMenu.vue'
 import Card from '@/components/Card.vue'
 import TopMenu from '@/components/TopMenu.vue'
 import {getAdmin} from '@/_helper/api'
-
+import { page } from 'vue-analytics'
 
 
 export default {
@@ -68,14 +65,14 @@ export default {
       }
   },
   methods: {
+        track () {
+        page('/pannel')
+      },
       SendService: function(serviceId){
-          console.log("trriger")
-          console.log(this.services[serviceId][0])
           localStorage.setItem("service-detail", this.services[serviceId][0] )
       },
       updateUser: function(desc) {
             let user =  JSON.parse(localStorage.getItem('user'))
-            console.log(user)
 
             this.axios({
                 method: 'put',
@@ -100,7 +97,6 @@ export default {
                     }
             })
             .then (function(response) {
-                console.log(response)               
                 localStorage.setItem('user', JSON.stringify(response.data))
             })
             .catch( function(err) {
@@ -112,7 +108,6 @@ export default {
       this.$refs.myModalRef.hide()
     },
       deleteService: function(id) {
-          console.log(this.services[id][0].appName)
           let alert = confirm(`آیا از حذف سرویس ${this.services[id][0].appName} مطمعن هستید؟ `)
           if (alert) {
               console.log(id)
@@ -126,7 +121,6 @@ export default {
               let log = JSON.stringify(newServ)
               this.updateUser(JSON.stringify(newServ))
 
-              console.log(JSON.parse(log))
           }
           else {
               console.log("no")
@@ -149,7 +143,6 @@ export default {
             .then (function(response) {
                 let token = response.data.access_token
                 localStorage.setItem('admin-token', token)
-                console.log(token)
 
             })
             .catch( function(err) {
@@ -160,14 +153,11 @@ export default {
 
         let Id = this.$store.state.jwt.nameid
 
-        console.log(localStorage.getItem('user-id'), 'sda')
         let user = JSON.parse(localStorage.getItem('user'))
         let desc = JSON.parse(user.Description)
         let chert = new Array
         // this.services = desc;
-        console.log(desc.length)
         // desc.splice(0,1)
-        console.log(user)
         for (let i=0; i < desc.length; i++) {
             chert.push(JSON.parse(desc[i]))
         }
@@ -176,8 +166,6 @@ export default {
           },
 
           getUser: function(id) {
-              console.log(localStorage.getItem('admin-token'))
-              console.log('get user' + id)
             let apiUrl = "http://service.sirang.sabinarya.com"
                
             this.axios({
@@ -191,7 +179,6 @@ export default {
                 }
             })
             .then (function(response) {
-              console.log(response.data)
                 localStorage.setItem('user', JSON.stringify(response.data))
             })
             .catch( function(err) {
@@ -227,4 +214,9 @@ h1, h2, h3, p, span {
     margin: 0;
 }
 
+@media screen and (max-width: 575px) {
+    .pannel-home {
+        padding: 80px 75px 0 10px;
+    }
+}
 </style>

@@ -133,15 +133,11 @@ export default {
             formInput.mobile = user.mobile
             formInput.email = user.email
             this.sectedService = service.sectedService
-            console.log(user)
-            console.log("bavar kon service dar")
-            console.log(this.sectedService)
 
         },
 
             updateUser: function(desc) {
             let user =  JSON.parse(localStorage.getItem('user'))
-            console.log(user)
 
             this.axios({
                 method: 'put',
@@ -166,7 +162,6 @@ export default {
                     }
             })
             .then (function(response) {
-                console.log(response)               
                 localStorage.setItem('user', JSON.stringify(response.data))
             })
             .catch( function(err) {
@@ -190,7 +185,6 @@ export default {
             .then (function(response) {
                 let token = response.data.access_token
                 localStorage.setItem('admin-token', token)
-                console.log(token)
 
             })
             .catch( function(err) {
@@ -201,27 +195,21 @@ export default {
 
         let Id = this.$store.state.jwt.nameid
 
-        console.log(localStorage.getItem('user-id'), 'sda')
         let user = JSON.parse(localStorage.getItem('user'))
         let desc = JSON.parse(user.Description)
         let chert = new Array
         // this.services = desc;
-        console.log(desc.length)
         // desc.splice(0,1)
-        console.log(user)
         for (let i=0; i < desc.length; i++) {
             chert.push(JSON.parse(desc[i]))
         }
     
         this.services = chert
         this.service = this.services[this.s][0]
-        console.log(this.service, '------------')
         this.updateForm()
           },
 
           getUser: function(id) {
-              console.log(localStorage.getItem('admin-token'))
-              console.log('get user' + id)
             let apiUrl = "http://service.sirang.sabinarya.com"
                
             this.axios({
@@ -235,7 +223,6 @@ export default {
                 }
             })
             .then (function(response) {
-              console.log(response.data)
                 localStorage.setItem('user', JSON.stringify(response.data))
             })
             .catch( function(err) {

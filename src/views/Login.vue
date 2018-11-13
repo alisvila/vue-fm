@@ -5,18 +5,18 @@
         <div class="login-wrapper">
     <form @submit.prevent="login" class="form-signin">
       <img class="mb-4 logo" src="../assets/finnoboom.png" alt="">
-      <label for="inputEmail" class="sr-only">آدرس ایمیل</label>
-      <input v-model="username" type="text" id="inputEmail" class="form-control" placeholder="آدرس ایمیل" required autofocus>
+      <label for="inputEmail" class="sr-only">تلفن همراه</label>
+      <input v-model="username" type="text" id="inputEmail" class="form-control" placeholder="تلفن همراه" required autofocus>
       <label for="inputPassword" class="sr-only">روز عبور</label>
-      <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="روز عبور" required>
+      <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="رمز عبور" required>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> مرا به خاطر بسپار
         </label>
       </div>
-      <button class="btn btn-lg btn-finno btn-block" type="submit" >ورود</button>
+      <button class="btn btn-lg btn-finno btn-block submit" type="submit" >ورود</button>
     </form>
-    <router-link to="/register" class="nav-link">ثبت نام کاربر جدید</router-link>
+    <router-link to="/register" class="nav-link register-link">ثبت نام کاربر جدید</router-link>
     
     </div>
     </div>
@@ -59,11 +59,9 @@ export default {
             .then (function(response) {
                 
                 let token = response.data.access_token
-                // console.log(token)
                 let Id = $jwt.decode(token).nameid
                 let dName = $jwt.decode(token).DisplayName
                 let userName = $jwt.decode(token).unique_name
-                localStorage.setItem('user-token', token)
                 localStorage.setItem('user-id', Id)
                 localStorage.setItem('dname', dName)
 
@@ -87,6 +85,12 @@ export default {
 </script>
 
 <style scoped>
+
+.register-link {
+    margin-top: 15px;
+    padding: 0;
+}
+
 .login-wrapper {
     margin: 19% auto;
     width: 445px;
@@ -102,5 +106,8 @@ export default {
 
 .logo {
     width: 96%;
+}
+.submit {
+    color: white;
 }
 </style>

@@ -11,7 +11,7 @@
                         color="#ff9900"
                         next-button-text="بعدی"
                         back-button-text="قبلی"
-                        finish-button-text="دخیره"
+                        finish-button-text="ذخیره"
                         title="افزودن برنامه جدید"
                         subtitle="">
         <tab-content title="اطلاعات عمومی"
@@ -23,7 +23,7 @@
         <div class = "col-xs-12 col-md-6 right-column" >
         <div class="col-md-12 mb-3">
         <label for="validationTooltip01">نام برنامه</label>
-                    <p class="sub-text">شناسه منحصر به فرد برنامه‌ی شما که برای فراخوانی سرویس‌ها استفاده میشود</p>
+                    <p class="sub-label">شناسه منحصر به فرد برنامه‌ی شما که برای فراخوانی سرویس‌ها استفاده میشود</p>
         <input v-model="formInput.appName" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
@@ -35,7 +35,7 @@
 
         <div class="col-md-12 mb-3">
         <label for="validationTooltip01">آدرس IP</label>
-                    <p class="sub-text"></p>
+                    <p class="sub-label"></p>
         <input v-model="formInput.IpAddress" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
@@ -46,7 +46,7 @@
 
                 <div class="col-md-12 mb-3">
             <label for="validationTooltip01">آدرس وب سایت برنامه</label>
-            <p class="sub-text">این آدرس در صفحه دسترسی به کاربر نمایش داده میشود</p>
+            <p class="sub-label">این آدرس در صفحه دسترسی به کاربر نمایش داده میشود</p>
             <input v-model="formInput.webAddress" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
@@ -55,7 +55,7 @@
                     
         <div class="col-md-12 mb-3">
             <label for="validationTooltip01">آدرس برگشت داده</label>
-            <p class="sub-text">کاربر پس از اعطای دسترسی به این آدرس هدایت خواهد شد (تنها برای رویکرد</p>
+            <p class="sub-label">کاربر پس از اعطای دسترسی به این آدرس هدایت خواهد شد (تنها برای رویکرد</p>
             <input v-model="formInput.callBack" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
@@ -69,7 +69,7 @@
 
                     <div class="col-md-12 mb-3">
             <label for="validationTooltip01">شناسه برنامه</label>
-            <p class="sub-text">شناسه منحصر به فرد برنامه‌ی شما که برای فراخوانی سرویس‌ها استفاده میشود</p>
+            <p class="sub-label">شناسه منحصر به فرد برنامه‌ی شما که برای فراخوانی سرویس‌ها استفاده میشود</p>
             <input v-model="formInput.appCode" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
                 Looks good!
@@ -80,7 +80,7 @@
 
         <div class="col-md-12 mb-3">
             <label for="validationTooltip01">نام شرکت</label>
-                        <p class="sub-text"></p>
+                        <p class="sub-label"></p>
 
             <input v-model="formInput.companyName" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required>
             <div class="valid-tooltip">
@@ -89,7 +89,7 @@
         </div>
             <div class="col-md-12 mb-3">
             <label for="validationTooltip01">نوع فعالیت</label>
-                        <p class="sub-text">توضیحات مختصری در مورد فعالیت برنامه شما</p>
+                        <p class="sub-label">توضیحات مختصری در مورد فعالیت برنامه شما</p>
 
             <textarea v-model="formInput.activityType" rows="5" type="text" class="form-control" id="validationTooltip01" placeholder="" value="Mark" required />
             <div class="valid-tooltip">
@@ -183,7 +183,7 @@
                     <td><i class="fa fa-check"></i></td>
                 </tr>                
                 <tr>
-                    <td>آدرس IP (به صورت جدا شونده با کاما ','):</td>
+                    <td>آدرس IP:</td>
                     <td class="dir-ltr">{{formInput.IpAddress}}</td>
                     <td></td>
                     <td><i class="fa fa-check"></i></td>
@@ -206,13 +206,13 @@
 
         </div>
         <div class="service-summary">
-            <h3>سرویس ها</h3>
+            <h3>سرویس های انتخاب شده</h3>
             <table class="table">
             <tbody>
                 <tr v-for="(select, index) in sectedService" :key="index">
                     <td>{{select.name}}</td>
-                    <td class="dir-ltr">{{select.value}}</td>
-                    <td><i class="fa fa-check"></i></td>
+                    <!-- <td class="dir-ltr">{{select.value}}</td>
+                    <td><i class="fa fa-check"></i></td> -->
                 </tr>
             </tbody>
             </table>
@@ -364,7 +364,7 @@ export default {
                     }
             })
             .then (function(response) {
-                console.log(response)               
+                // console.log(response)               
                 localStorage.setItem('user', JSON.stringify(response.data))
                 $router.push('/pannel')
             })
@@ -412,7 +412,7 @@ export default {
 
             }
             else {
-                this.msg="یکی از سرویس ها را انتخواب نمایید"
+                this.msg="یکی از سرویس ها را انتخاب نمایید"
                 this.alert = true;
                 return false
             }
@@ -492,7 +492,7 @@ export default {
 </script>
 
 <style>
-.sub-text {
+.sub-label {
     font-size: 11px;
     color: gray;
     margin: 0;
@@ -541,6 +541,11 @@ export default {
 .info {
     margin: 30px;
     text-align: right;
+}
+@media screen and (max-width: 575px) {
+    .pannel-home {
+        padding: 80px 75px 0 10px;
+    }
 }
 
 </style>

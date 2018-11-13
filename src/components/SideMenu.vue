@@ -1,7 +1,7 @@
 <template>
 <div class="sidebar-nav">
 <nav class="navbar navbar-default flex-column" role="navigation">
-    <ul class="nav navbar-nav dir-rtl side-navbar">
+    <ul class="nav navbar-nav dir-rtl side-navbar d-none d-sm-block">
         <a class="navbar-brand" href="#">
             <img class="logo" src="@/assets/finnoboom.png">
         </a>
@@ -32,6 +32,41 @@
         <li><a  class="nav-link" href="pdf/tashim.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i><span>حساب میانی و تسهیم</span></a></li>
         <li><a  class="nav-link" href="#sample-code"><i class="fa fa-code"></i><span>نمونه کد</span></a></li> -->
     </ul>
+
+
+       <ul class="nav navbar-nav dir-rtl side-navbar d-block d-sm-none">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="@/assets/finno.png">
+        </a>
+        <p></p>
+        <li class="active">
+            <router-link to="/pannel" class="nav-link">
+                <i class="fa fa-dashboard"></i><span>اپ ها</span>
+            </router-link>
+
+        </li>
+        <li class="active">
+            <router-link to="/pannel/documents" class="nav-link">
+            <i class="fa fa-dashboard"></i><span> مستندات</span>
+            </router-link>
+            <ul>
+                <li>
+                </li><li>
+                </li><li>
+                </li>
+            </ul>
+        </li>
+        <li class="active">
+            <router-link to="/pannel/example" class="nav-link">
+            <i class="fa fa-dashboard"></i><span>نمونه کد</span>
+            </router-link>
+        </li>
+        <!-- <li><a  class="nav-link" href="/pannel/documents"><i class="fa fa-file-text"></i><span>مستندات فنی سرویسها</span></a></li>
+        <li><a  class="nav-link" href="pdf/tashim.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i><span>حساب میانی و تسهیم</span></a></li>
+        <li><a  class="nav-link" href="#sample-code"><i class="fa fa-code"></i><span>نمونه کد</span></a></li> -->
+    </ul>
+
+
     <p class="copyright">تمام حقوق این سایت برای شرکت سابین تجارت آریا محفوظ می‌باشد.</p>
 </nav>
 </div>
@@ -117,6 +152,21 @@ export default {
 .side-navbar {
     padding-top: 11px;
     width: 100%;
+}
+
+@media screen and (max-width: 575px) {
+    .sidebar-nav {
+        right: 75px;
+        margin-right: -75px;
+        width: 75px;
+    }
+    .navbar-nav .nav-link {
+        text-align: center;
+        padding: 10px;
+    }
+    .logo {
+        width: 65px;
+    }
 }
 
 </style>

@@ -18,37 +18,45 @@
       </div>
       <div class="section">
         <div class="section-title">
-          <h1>مشتریان تجاری</h1>
+          <h1>همکاران تجاری</h1>
         </div>
         <div class="list-logo-customer">
-              <ul class="sftc-tb-links">
-                  <li class="card partners">
-                      <a href="#tab1" id="#tab1" class="sftc-scroll">
-                          <span class="icon-tab">
+              
 
-                            <img src="../assets/safebox.png" >
-                          </span>
-                          <div class="icon-text">خدمات بانکی</div>
-                      </a>
-                  </li>
-                  <li class="card partners">
-                      <a href="#tab2" id="#tab2" class="sftc-scroll">
-                          <span class="icon-tab">
-                            <img src="../assets/speed.png" >
-                          </span>
-                          <div class="icon-text">تسهیلگر عملیات</div>
-                      </a>
-                  </li>
-                  <li class="card partners">
-                      <a href="#tab3" id="#tab3" class="sftc-scroll">
-                          <span class="icon-tab">
-                            <img src="../assets/money.png" >
-                          </span>
-                          <div class="icon-text">خدمات بازار سرمایه</div>
-                      </a>
-                  </li>
+                        <ul>
+                                                                <li>
+                                        <a href="https://www.ba24.ir/" class="llc llc-item">
+                                            <img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_1.png" width="109" height="107" alt=" بانک آینده">
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.enbank.ir" class="llc llc-item">
+                                            <img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_2.png" width="109" height="107" alt="بانک اقتصاد نوین">
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="http://www.bank-day.ir/" class="llc llc-item">
+                                            <img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_3.png" width="109" height="107" alt="بانک دی">
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="http://www.izbank.ir/" class="llc llc-item">
+                                            <img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_4.png" width="109" height="107" alt="بانک ایران زمین">
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.ansarbank.com" class="llc llc-item">
+                                            <img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_5.png" width="109" height="107" alt="بانک انصار">
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.nadpco.com" class="llc llc-item">
 
-              </ul>
+
+                                        </a>
+                                    </li>
+                        </ul>
+
 
         </div>
       </div>
@@ -97,6 +105,8 @@
 
 <script>
 import Menu from '../components/menu'
+import { page } from 'vue-analytics'
+
   export default {
     name: 'home',
     components: {
@@ -112,6 +122,11 @@ import Menu from '../components/menu'
         },
       }
     },
+    methods: {
+      track () {
+        page('/home')
+      }
+    }
     
   }
 </script>

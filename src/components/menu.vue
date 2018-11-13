@@ -2,7 +2,7 @@
     <nav id="menu" class="fixed-top navbar navbar-expand-lg navbar-light bg-light bg-white ">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img class="logo" src="../assets/favicon.png">
+                <img class="logo" src="../assets/finno.png">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

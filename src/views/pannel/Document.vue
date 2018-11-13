@@ -570,5 +570,10 @@ export default {
     margin: 0;
 }
 
+@media screen and (max-width: 575px) {
+    .pannel-home {
+        padding: 80px 75px 0 10px;
+    }
+}
 
 </style>

@@ -3,7 +3,7 @@
     <div class="navbar-header col-xs-5">
         <!-- <a class="navbar-brand" href="#"> -->
             <!-- <img class="logo" src="@/assets/finnoboom.png"> -->
-        <span class="navbar-brand" >{{userName}}</span>
+        <span class="navbar-brand">{{userName}}</span>
         <!-- </a> -->
     </div>
     <ul class="nav pull-right messages">
@@ -11,7 +11,7 @@
     </ul>
     <ul class="nav mr-auto">
         <ul class="nav navbar-nav pull-right signout">
-            <a href="/" class="top-link">خــروج</a>
+            <a href="/" class="top-link" @click="logout">خــروج</a>
         </ul>
         <!-- <ul class="nav navbar-nav pull-right change-pass"><a class="btn btn-default">تغییر رمز عبور</a>
             <img class="loading" src="svg/loop.svg" style="display: none;">
@@ -29,6 +29,15 @@ export default {
         return {
             userName: localStorage.getItem('dname')
         }
+    },
+    methods: {
+        logout: function() {
+            localStorage.removeItem('user')
+            localStorage.removeItem('jwt')
+
+        }
+
+
     }
 }
 </script>
@@ -58,5 +67,10 @@ export default {
 .top-link:hover {
     background-color: #84d7d8
 
+}
+@media screen and (max-width: 575px) {
+    .navbar-default {
+        padding: 0px 75px 0 10px;
+    }
 }
 </style>

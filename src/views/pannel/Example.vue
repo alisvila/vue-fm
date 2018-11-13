@@ -9,7 +9,7 @@
             <div class="wrapper">
               <div class="inside">
               <h3>
-                دریافت نمونه کد و اینا
+                دریافت نمونه کد
               </h3>
               <p>
                 به زودی نمونه کد قرار داده می شود
@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style>
+<style scopped>
 .pannel-home {
     padding: 80px 225px 0 10px;
     direction: rtl;
@@ -54,5 +54,11 @@ export default {
 .inside {
   padding: 19px;
   text-align: right;
+}
+
+@media screen and (max-width: 575px) {
+    .pannel-home {
+        padding: 80px 75px 0 10px;
+    }
 }
 </style>

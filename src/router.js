@@ -15,6 +15,23 @@ import Example from './views/pannel/Example.vue'
 
 Vue.use(Router)
 
+const ifNotAuthenticated = (to, from, next) => {
+  if (!localStorage.getItem('user')) {
+    next()
+    return
+  }
+  next('/pannel')
+}
+
+const ifAuthenticated = (to, from, next) => {
+  if (localStorage.getItem('jwt')) {
+    next()
+    return
+  }
+  next('/login')
+}
+
+
 export default new Router({
   mode: "history",
   routes: [
@@ -32,39 +49,40 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: "/order",
-      name: "register",
-      component: RegisterForm
-    },
-    {
       path: "/allOrder",
       name: "order",
-      component: singleOrder
+      component: singleOrder,
+      beforeEnter: ifAuthenticated,
     },
     {
       path: "/login",
       name: "login",
-      component: Login
+      component: Login,
+      beforeEnter: ifNotAuthenticated,
     },
     {
       path: "/register",
       name: "register",
-      component: Register
+      component: Register,
+      beforeEnter: ifNotAuthenticated,
     },
     {
       path: "/pannel/apps",
       name: "apps",
-      component: Apps
+      component: Apps,
+      beforeEnter: ifAuthenticated,
     },
     {
       path: "/pannel/new",
       name: "NewService",
-      component: NewService
+      component: NewService,
+      beforeEnter: ifAuthenticated,
     },
     {
       path: "/pannel",
       name: "pannelIndex",
-      component: pannelIndex
+      component: pannelIndex,
+      beforeEnter: ifAuthenticated,
     },
     {
       path: "/pannel/documents",
@@ -74,12 +92,13 @@ export default new Router({
     {
       path: "/pannel/app/:id",
       name: "AppDetail",
-      component: AppDetail
+      component: AppDetail,
+      beforeEnter: ifAuthenticated,
     },
     {
       path: "/pannel/example",
       name: "Example",
-      component: Example
+      component: Example,
     },
     
   ]

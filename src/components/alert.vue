@@ -17,4 +17,7 @@ export default {
 </script>
 
 <style>
+.alert {
+  border-radius: 0!important;
+}
 </style>
