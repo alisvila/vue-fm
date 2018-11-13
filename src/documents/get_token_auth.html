@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<html>
+<title>تمدید توکن</title>
+<body onload="checkSandbox()">
+<xmp theme="cerulean" style="display:none;">
+
+###POST /dev/v1/oauth2/token
+
+* **شرح:** ‫قبل از منقضی شدن توکن با ارسال رفرش توکن، می‌توانید توکن جدید دریافت کنید.
+
+
+````````````````
+{address}/dev/v1/oauth2/token
+````````````````
+<div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
+ https://sandbox.finnoboom.com <b> :address </b>
+</div>
+
+<div class="production-address production" style="float:right" style="display: block">
+ https://api.finnoboom.com <b> :address </b>
+ </div>
+
+#### Notes
+
+* فرستادن تمام پارامتر های Body الزامی است
+
+#### Headers
+مقادیر زیر باید در هدر قرار بگیرد
+````````````````
+Content-Type : application/json
+Authorization : Basic {AuthenticationString}
+````````````````
+مقدار AuthenticationString باید برابر Base64 از اطلاعات برنامه شما به صورت ```YOURCLIENTID:YOURCLIENTSECRET``` باشد. برای مثال اگر شناسه برنامه شما برابر firstapp باشد و رمز برنامه شما که در قسمت جزییات برنامه در کنسول قابل مشاهده است برابر 6932dddb927b76e54997 باشد، شما باید Base64 مقدار ```firstapp:6932dddb927b76e54997``` را تولید کنید. در این صورت مقدار این هدر باید برابر مقدار زیر قرار گیرد:
+
+````````````````
+Basic Zmlyc3RhcHA6NjkzMmRkZGI5MjdiNzZlNTQ5OTc=
+````````````````
+
+#### Body
+##### Example:
+````````````````
+{ "grant_type": "refresh_token"
+, "refresh_token": "g3lx4gGUWv0CUZXShvrvgrrGGRY7Cm7U6OMGPAPjXv0Pj7Te4ir4GSbA2LeqGUovqssaVndz8B3mashTx7bRqZa3aNhE5LUYxYFs11QfHpyBegX4KHKTiYc71A2v6JXEP5tDYIPoTBXgFKvbJ948MMsRCodjo10IbngfeNRmpPuTo5Q8j7WQlMr8qRlHwDwqVQvSe5Xj3OGL1ARfIel9SsvtrzEp1wC8XwWifwnYXQG3NLtGO8wulPUmJedCMRRVfZ1QXdnlg"
+}
+````````````````
+* **grant_type:** این مقدار باید برابر refresh_token قرار گیرد
+* **refresh_token:** رفرش توکن
+
+
+####Results Format
+##### Successful result format (status code 200)
+````````````````
+{ "access_token":
+  { "value": "tSBFBjsJnyWEpWrWtgji0SvF53aq8zz1I7dYB9WFnx02hOoltnO8N5BPdlMEwaZg4syBSzl3vexsMZXMi4ZDBPvttclgPQcurDl8fPaVzqmyRV8BL3gPae0PkiiMDzHml6H1Ci3BDxCWIX0u13JFMyYMF44sqveYv2gFkL7LrqnOMvUsjbCFHRbDoz429kKFdueoHrEZurnkhQYy0DEdvIpe3iLCVWMJTCqFe4yURfz8lv3sha9Lc2RbEzqaIT2e"
+  , "lifeTime": 864000000
+  , "creationDate": "13960324145712"
+  , "refreshToken": "BwCmT5XTvw6O0IijSRJuWO2PWX6NCR6VBzV2aLC8ZQPqaoWFuPWZwhw8mUmg6XoKkZFI8T8LBk0JpbGo4XGWTpReiKorKZXaLnkh7YCMNR9qI0Spi50kDwqEOZHHyVSt6PXKKq1QmAJmP8PA59teMxgI7kzoC9vwNEJQlzrbXrshhPVv7ZTJVSN22I43ptIsnZlU7hRCok0ze1AACkdfICvGREmjvZEQSbGpnW7N4QdgsZFYYTc5JJ6VJSlzvCIUB94ma70Ig"
+  }
+, "token_type": "Bearer"
+}
+````````````````
+* **access_token:**
+	* **value:** توکنی که برای فراخوانی سرویس‌ها استفاده میشود
+	* **refreshToken:** اگر عمر توکن تمام شود با استفاده از این توکن و فراخوانی سرویس توکن قادر خواهید بود توکن جدید دریافت نمایید
+	* **lifeTime:** عمر توکن به میلی ثانیه
+	* **creationDate:** زمان ساخت توکن به صورت تاریخ شمسی YYYYMMDDHHmmss
+* **token_type‌:** مقدار این فیلد برابر Bearer خواهد بود
+
+#### UnSuccessful result format
+در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید [لیست خطاها](/generic-errors.html)
+</xmp>
+</body>
+<script src="https://sandbox.finnotech.ir/strapdown.js"></script>
+<script src="https://sandbox.finnotech.ir/controler.js"></script>
+</html>
+

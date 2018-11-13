@@ -16,6 +16,8 @@
       </div>
       <button class="btn btn-lg btn-finno btn-block" type="submit" >ورود</button>
     </form>
+    <router-link to="/register" class="nav-link">ثبت نام کاربر جدید</router-link>
+    
     </div>
     </div>
 </div>
@@ -41,7 +43,7 @@ export default {
     },
     methods: {
         login: function() {
-            const { username, password, $store, $router} = this
+            const { username, password, $store, $router, $jwt} = this
 
             this.axios({
                 method: 'post',
@@ -57,22 +59,20 @@ export default {
             .then (function(response) {
                 
                 let token = response.data.access_token
-                let Id = VueJwtDecode.decode(token).nameid
-                let dName = VueJwtDecode.decode(token).DisplayName
-                let userName = VueJwtDecode.decode(token).unique_name
+                // console.log(token)
+                let Id = $jwt.decode(token).nameid
+                let dName = $jwt.decode(token).DisplayName
+                let userName = $jwt.decode(token).unique_name
                 localStorage.setItem('user-token', token)
                 localStorage.setItem('user-id', Id)
                 localStorage.setItem('dname', dName)
-                localStorage.setItem('userfilan', userfilan)
 
                 $store.state.userName = username
                 let userfilan = {
                     Id, userName, dName
                 }
 
-                $store.state.jwt = VueJwtDecode.decode(token)
-                localStorage.setItem('jwt', JSON.stringify(VueJwtDecode.decode(token)))
-                console.log(localStorage.getItem('jwt'))
+                localStorage.setItem('jwt', JSON.stringify($jwt.decode(token)))
                 $router.push('/pannel/')
             })
             .catch( function(err) {

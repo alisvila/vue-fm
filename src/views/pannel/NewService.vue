@@ -16,7 +16,7 @@
                         subtitle="">
         <tab-content title="اطلاعات عمومی"
                     icon="ti-user" 
-                    :before-change="validateDemo"
+                    :before-change="validateFirstStep"
                     >
                     
         <div class="row">
@@ -233,7 +233,7 @@
             الف- به طور مستقیم از طریق صفحه اینترنتی کنسول توسعه دهنده فینوبوم که کلاینت در آن عضو است.
             </p>
             <p>
-                ب- از طریق تماس با شرکت ارتباط فردا با شماره تلفن ۴۱۶۲۴۰۰۰ .
+                ب- از طریق تماس با شرکت سابین تجارت آریا با شماره تلفن ۴۱۶۲۴۰۰۰ .
             </p>
             <div class="checkbox">
                     <label>
@@ -325,7 +325,7 @@ export default {
             let userName = this.$store.state.userName;
             const {formInput} = this
             let user =  JSON.parse(localStorage.getItem('user'))
-            console.log(JSON.parse(user.Description))
+            // console.log(JSON.parse(user.Description))
             let payload = [{
                                 "id": number + 1,
                                 "user": formInput.user,
@@ -340,7 +340,7 @@ export default {
             }]
             let jsons = JSON.parse(user.Description).concat(JSON.stringify(payload))
             let desc = JSON.stringify(jsons)
-            console.log(desc)
+            // console.log(desc)
             this.axios({
                 method: 'put',
                 url: this.apiUrl + '/api/UserManagement', 
@@ -389,7 +389,7 @@ export default {
             })
             .then (function(response) {
                 localStorage.setItem('user', JSON.stringify(response.data))
-                console.log(response.data)
+                // console.log(response.data)
             })
             .catch( function(err) {
                 // getAdmin()
@@ -405,7 +405,7 @@ export default {
             return true
         },
         validateSecondStep() {
-            console.log(this.sectedService.length)
+            // console.log(this.sectedService.length)
             if (this.sectedService != null && this.sectedService.length >= 1) {
                 this.alert = false;
                 return true
@@ -471,7 +471,7 @@ export default {
             .then (function(response) {
                 let token = response.data.access_token
                 localStorage.setItem('admin-token', token)
-                console.log(token)
+                // console.log(token)
                 // getUser(localStorage.getItem('user-id'))
 
             })

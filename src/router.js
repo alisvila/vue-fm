@@ -11,7 +11,6 @@ import pannelIndex from './views/pannel/index.vue'
 import Documents from './views/pannel/Document.vue'
 import AppDetail from './views/pannel/ServiceDetail.vue'
 import Example from './views/pannel/Example.vue'
-import service1 from './documents/service1'
 
 
 Vue.use(Router)
@@ -82,12 +81,6 @@ export default new Router({
       name: "Example",
       component: Example
     },
-    {
-      path: "/pannel/doc/service1",
-      name: "service1",
-      component: service1
-    },
-    
     
   ]
 })

@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<html>
+<title>ابطال توکن</title>
+<body onload="checkSandbox()">
+ <xmp theme="cerulean" style="display:none;">
+
+###DELETE   /dev/v1/clients/{clientId}/token
+* **شرح: ** &#x202b; ابطال توکن صادر شده قبل از منقضی شدن
+
+* **رویکرد: ** ```Client_Credential```
+
+````````````````
+{address}/dev/v1/clients/{clientId}/token
+````````````````
+<div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
+ https://sandbox.finnoboom.com <b> :address </b>
+</div>
+
+<div class="production-address production" style="float:right" style="display: block">
+ https://api.finnoboom.com <b> :address </b>
+ </div>
+
+
+#### URI Parameters
+* **clientId: ** شناسه کلاینت
+
+#### Headers
+ مقادیر زیر باید در هدر قرار بگیرد
+````````````````
+Authorization : Bearer {Token}
+Content-Type : application/json
+````````````````
+
+#### Body
+##### Example:
+````````````````
+{ "token": "q7CSRyysU3qi3S0HEpAxTPrClruoGNpAv0wRL5YJwJaLyLtcy2VVnifYoXWjAFiFCgRhW6bErdCmLOYxCjJKZuPCrAgekCIH4eN1dFvq89xMGj3LwVDpxKwBYUVfffBYNbVE1GSTtySK0eRsqfQ4T4XbrXhoeyeWAFAMO3EXlwEDXd102SOfF0Y46863hVgyrFRm393P859ouxh6nV9UhUqbns7DukaCKxO57m8hHKFgJgNrOkPApLiMk8xVjf69
+"
+}
+````````````````
+* **token:** &#x202b; توکنی که میخواهید آن را باطل کنید
+
+###Results Format
+#### Successful result format (status code 204)
+ در صورتیکه خطایی رخ ندهد 204 برگردانده میشود
+
+#### UnSuccessful result format
+ در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
+
+</xmp>
+</body>
+<script src="https://sandbox.finnotech.ir/strapdown.js"></script>
+<script src="https://sandbox.finnotech.ir/controler.js"></script>
+</html>
+
+
+

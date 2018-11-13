@@ -21,38 +21,35 @@
           <h1>مشتریان تجاری</h1>
         </div>
         <div class="list-logo-customer">
-          <ul>
-              <li>
-                  <a href="http://www.izbank.ir/" class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_4_min.png"
-                          width="57" height="56" alt="بانک ایران زمین">
-                  </a>
-              </li>
-              <li>
-                  <div class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_1_min.png" width="57"
-                          height="56" alt="بانک آینده">
-                  </div>
-              </li>
-              <li>
-                  <div class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_2_min.png" width="57"
-                          height="56" alt="بانک اقتصاد نوین">
-                  </div>
-              </li>
-              <li>
-                  <div class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_5_min.png" width="57"
-                          height="56" alt="بانک انصار">
-                  </div>
-              </li>
-              <li>
-                  <a href="http://www.bank-day.ir/" class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_3_min.png"
-                          width="57" height="56" alt="بانک دی">
-                  </a>
-              </li>
-              <li>
-                  <div class="llc llc-item"><img src="http://finnoboom.com/wp-content/uploads/2018/08/bank_6_min.png" width="57"
-                          height="56" alt="نوآوران امین">
-                  </div>
-              </li>
-          </ul>
+              <ul class="sftc-tb-links">
+                  <li class="card partners">
+                      <a href="#tab1" id="#tab1" class="sftc-scroll">
+                          <span class="icon-tab">
+
+                            <img src="../assets/safebox.png" >
+                          </span>
+                          <div class="icon-text">خدمات بانکی</div>
+                      </a>
+                  </li>
+                  <li class="card partners">
+                      <a href="#tab2" id="#tab2" class="sftc-scroll">
+                          <span class="icon-tab">
+                            <img src="../assets/speed.png" >
+                          </span>
+                          <div class="icon-text">تسهیلگر عملیات</div>
+                      </a>
+                  </li>
+                  <li class="card partners">
+                      <a href="#tab3" id="#tab3" class="sftc-scroll">
+                          <span class="icon-tab">
+                            <img src="../assets/money.png" >
+                          </span>
+                          <div class="icon-text">خدمات بازار سرمایه</div>
+                      </a>
+                  </li>
+
+              </ul>
+
         </div>
       </div>
       <div class="section">
@@ -63,28 +60,27 @@
             </h1>
             
 <ul class="sftc-tb-links">
-    <li class="card">
+    <li class="card services">
         <a href="#tab1" id="#tab1" class="sftc-scroll">
             <span class="icon-tab">
 
-              <img src="../assets/logo.png" >
+              <img src="../assets/safebox.png" >
             </span>
             <div class="icon-text">خدمات بانکی</div>
         </a>
     </li>
-    <li class="card">
+    <li class="card services">
         <a href="#tab2" id="#tab2" class="sftc-scroll">
             <span class="icon-tab">
-              <img src="../assets/logo.png" >
+              <img src="../assets/speed.png" >
             </span>
             <div class="icon-text">تسهیلگر عملیات</div>
         </a>
     </li>
-    <li class="card">
+    <li class="card services">
         <a href="#tab3" id="#tab3" class="sftc-scroll">
             <span class="icon-tab">
-              <img src="../assets/logo.png" >
-
+              <img src="../assets/money.png" >
             </span>
             <div class="icon-text">خدمات بازار سرمایه</div>
         </a>
@@ -155,8 +151,12 @@ import Menu from '../components/menu'
       width: 185px;
     height: 185px;
 }
-.card img {
+.services img {
   width: 99px;
+}
+
+.partners img {
+  width: 75px;
 }
 .icon-text {
       margin: 15px 0;

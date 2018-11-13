@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<html>
+<title>دریافت لیست توکن ها</title>
+<body onload="checkSandbox()">
+ <xmp theme="cerulean" style="display:none;">
+
+###GET   /dev/v1/clients/{clientId}/tokens
+* **شرح: **  &#x202b; سرویس دریافت لیست توکن ها .این سرویس جزو سرویسهای مجاز فراخوانی با client credential میباشد
+
+* **اسکوپ: ** ```boomrang:tokens:get```
+
+* **رویکرد: ** ```Client_Credential```
+
+````````````````
+{address}/dev/v1/clients/{clientId}/tokens?uid={uid}
+````````````````
+<div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
+ https://sandbox.finnoboom.com <b> :address </b>
+</div>
+
+<div class="production-address production" style="float:right" style="display: block">
+ https://api.finnoboom.com <b> :address </b>
+ </div>
+
+#### URI Parameters
+
+* **clientId :**  شناسه کلاینت
+
+#### Query Parameters
+* **uid :**  کد ملی معتبر که باید رشته عددی به طول ۱۰ کاراکتر باشد
+
+#### Headers
+مقادیر زیر باید در هدر قرار بگیرد
+````````````````
+Authorization : Bearer {Token}
+````````````````
+
+###Results Format
+#### Successful result format (status code 200)
+````````````````
+  [
+    {
+      "lifeTime": 864000000,
+      "clientId": "58b561abd68fc23f2067bbb6",
+      "userId": "0013978036",
+      "active": true,
+      "maxAmountPerTransaction": 100,
+      "monthlyCallLimitation": 10,
+      "type": "CLIENT-CREDENTIAL",
+      "deposits": [
+        {
+          "prefix": "oak",
+          "resources": [
+            "0201648895000"
+          ]
+        }
+      ],
+      "scopes": [
+        "boomrang:*",
+        "oak:transfer-to:execute",
+        "oak:iban-inquiry:get"
+      ],
+      "id": "58b568f100ca7476537ab7bd"
+    },...
+  ]
+````````````````
+* **lifeTime:**  عمر توکن
+* **clientId:**  شناسه کلاینت
+* **userId:**   کد ملی
+* **active:** &#x202b; اگر توکن فعال باشد مقدار این فیلد true در غیر این صورت false است
+* **maxAmountPerTransaction:**  حداکثر مبلغ تراکنش در ماه
+* **monthlyCallLimitation:**    حداکثر تعداد فراخوانی در ماه 
+* **type:** نوع رویکرد
+* **deposits:** آرایه ای از سورس حسابهایی که برای این توکن ثبت شده
+  * **resources:** شماره حساب
+* **scopes:** آرایه ای از اسکوپ ها
+
+
+#### UnSuccessful result format
+ در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
+
+</xmp>
+</body>
+<script src="https://sandbox.finnotech.ir/strapdown.js"></script>
+<script src="https://sandbox.finnotech.ir/controler.js"></script>
+</html>
+

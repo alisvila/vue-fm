@@ -13,12 +13,15 @@ import VueFullPage from 'vue-fullpage.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueJwtDecode from 'vue-jwt-decode'
+import VueJWT from 'vuejs-jwt'
 
 Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue);
 Vue.use(VueFormWizard);
 Vue.use(VueFullPage);
 Vue.use(VueJwtDecode)
+
+Vue.use(VueJWT)
 Vue.config.productionTip = false
 
 new Vue({

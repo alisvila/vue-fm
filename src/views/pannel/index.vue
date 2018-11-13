@@ -8,7 +8,7 @@
     <div class="row">
 
         <div class="col-lg-4 col-sm-12 col-md-6" v-for="(i, index) in services" :key="index">
-            <card :link="`/pannel/app/${index}`" status="در حال بررسی" :image="require('@/assets/logo.png')" :name="i[0].appName" :id="index"/>
+            <card :link="`/pannel/app/${index}`" status="در حال بررسی" :image="require('@/assets/feature.png')" :name="i[0].appName" :id="index"/>
         </div>
 
         <div class="col-lg-4 col-sm-12 col-md-6">
@@ -138,7 +138,7 @@ export default {
             this.axios({
             method: 'post',
             url: 'http://service.sirang.sabinarya.com/api/account/login', 
-            data: `grant_type=password&username=aliam&password=123456&client_id=ngAuthApp`,
+            data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
             headers: { 
                 "content-type": "application/x-www-form-urlencoded",
                 "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',

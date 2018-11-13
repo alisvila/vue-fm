@@ -1,32 +1,42 @@
 
 <!DOCTYPE html>
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 </head>
 <html>
-<title>اعلام شماره حساب‌ها با دریافت کد ملی</title>
+<title>سرویس استعلام فراخوانی‌ها</title>
 <body onload="checkSandbox()">
- <xmp theme="cerulean" style="display:none;">
+<xmp theme="cerulean" style="display:none;">
 
-###GET  /oak/v1/{nid}/deposits
+###GET   /dev/v1/clients/{clientId}/wages
+* **شرح: ** &#x202b; این سرویس با دریافت یک بازه زمانی همه فراخوانی های انجام شده توسط کلاینت به همراه آخرین وضعیت آنها را بر میگرداند , هم چنین در صورت ارسال یک trackId خاص میتوان آخرین وضعیت آن تراکنش را استعلام کرد
 
-* **شرح: ** سرویس لیست حساب‌ها, این سرویس هنگامی به کار میرود که شما قصد دارید شماره حساب های مشتریان خود را دریافت نمایید.
+* **اسکوپ: ** ```boomrang:wages:get```
 
-* **اسکوپ: **  ```oak:deposits:get```
-
-* **رویکرد: ** ```Authorization_Code```
+* **رویکرد: ** ```Client_Credential```
 
 ````````````````
-{address}/oak/v1/{nid}/deposits?trackId={trackId}
+{address}/dev/v1/clients/{clientId}/wages?fromDate={fromDate}&toDate={toDate}&status={status}&trackId={trackId}
 ````````````````
 <div class="sandboxaddress sandbox" id="sandbox" style="float:right" style="display: none" >
- https://sandbox.finnotech.ir <b> :address </b>
+ https://sandbox.finnoboom.com <b> :address </b>
 </div>
 
 <div class="production-address production" style="float:right" style="display: block">
- https://api.finnotech.ir <b> :address </b>
+ https://api.finnoboom.com <b> :address </b>
  </div>
 
+#### URI Parameters
+
+* **clientId :** شناسه کلاینت
+
+#### Query Parameters
+
+
+* **fromDate :** (به صورت string) رشته  ای اختیاری ۸ یا ۱۴ رقمی از تاریخ و ساعت با فرمت YYYYMMDD و یا YYYYMMDDhhmmss 
+* **toDate :** (به صورت string) رشته ای اختیاری ۸ یا ۱۴ رقمی از تاریخ و ساعت با فرمت YYYYMMDD و یا YYYYMMDDhhmmss
+* **status :**  (به صورت string) &#x202b; وضعیت که میتواند یکی از موارد PENDING|FAILED|DONE|UNKNOWN باشد
+* **trackId :** (به صورت string) &#x202b; رشته ای با طول حداکثر ۴۰ کاراکتر شامل حرف و عدد. trackId تراکنش مورد نظر که میخواهید آخرین وضعیت آن را استعلام کنید.در صورت نفرستادن trackId همه تراکنش ها را برمیگرداند.
 
 #### Headers
 مقادیر زیر باید در هدر قرار بگیرد
@@ -34,31 +44,48 @@
 Authorization : Bearer {Token}
 ````````````````
 
-#### URI Parameters
-* **nid :**  (اجباری) کد ملی کاربر صاحب حساب مبدا که برای برداشت از او اجازه گرفته اید و باید رشته عددی به طول ۱۰ رقم باشد
-
-#### Query Parameters
-* **trackId :** اختیاری (string)  &#x202b; رشته ای با طول حداکثر ۴۰ کاراکتر شامل حرف و عدد. پیشنهاد ما برای trackId تولید کردن UUID است. در صورت نیاز به نتیجه یک فراخوانی میتوانید با trackId آن را فیلتر کنید. در گزارش فراخوانی سرویس فراخوانی مورد نظر را با همین کد پیگیری پیدا میکنید.
-  * example:  ```deposits-010```
+* **Token :** (اجباری) توکن
 
 ###Results Format
 #### Successful result format (status code 200)
 ````````````````
-    [ "0202518954031"
-    , "0100121067088"
-    , "0301073804002"
+    [
+      {
+        "status": "DONE",
+        "amount": 500,
+        "transactionAmount": 0,
+        "trackId": "bc548f10-50a5-4ddf71-baddd4c-ddfffee2df44185",
+        "date": "13951211114246",
+        "tariffName": "finotech",
+        "scopeName": "oak:iban-inquiry:get",
+        "serviceName": "استعلام شبا",
+        "uid": "undefined",
+        "inquiry_date": "",
+        "inquiry_time": "",
+        "inquiry_sequence": "",
+      },...
     ]
 ````````````````
+&#x202b; این سرویس آرایه ای از کارمزدها را برمی‌گداند
 
-* آرایه ای از شماره حساب های مشتری برگردانده می شود
+* **status:** &#x202b; وضعیت که میتواند مقادیر DONE و FAILED  و PENDING و UNKNOWN را داشته باشد, در صورتی که DONE نباشد کارمزد برای شما محاسبه نشده است
+* **amount:** مبلغ کارمزد
+* **transactionAmount:** مبلغ تراکنش
+* **trackId:** کد پیگیری
+* **date:** &#x202b; تاریخ که به صورت YYYYMMDDHHMMSS است
+* **tariffName:** نام تعرفه
+* **scopeName:** نام اسکوپ
+* **serviceName:** نام سرویس
+* **uid:** شماره ملی کاربر
+* **inquiry_date:** اگر سرویس انتقال وجه مالی داشته باشد این فیلد تاریخ انجام تراکنش است
+* **inquiry_time:** اگر سرویس انتقال وجه مالی داشته باشد این فیلد ساعت انجام تراکنش است
+* **inquiry_sequence:** اگر سرویس انتقال وجه مالی داشته باشد این فیلد به همراه تاریخ و ساعت برای استعلام تراکنش استفاده میشود
 
 #### UnSuccessful result format
- در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
-
+ &#x202b; در اینجا میتوانید لیست خطاهای سرویس ها را مشاهده کنید  [لیست خطاها](/generic-errors.html)
 </xmp>
 </body>
-<script src="https://sandbox.finnoboom.com/strapdown.js"></script>
-<script src="https://sandbox.finnoboom.com/controler.js"></script>
+<script src="https://sandbox.finnotech.ir/strapdown.js"></script>
+<script src="https://sandbox.finnotech.ir/controler.js"></script>
 </html>
-
 

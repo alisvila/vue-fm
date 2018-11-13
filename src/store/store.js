@@ -23,13 +23,13 @@ export default new Vuex.Store({
   actions: {
     auth_request: ({commit, dispatch}, user) => {
       return new Promise((resolve, reject) => {
-        console.log('here')
+        // console.log('here')
 
       commit('auth_request')
       apiCall({url: 'auth', data: user, method: 'POST'})
       .then(resp => {
         localStorage.setItem('user-token', resp.token)
-        console.log('brear ', resp.token)
+        // console.log('brear ', resp.token)
 
         axios.defaults.headers.common["Access-Control-Allow-Origin"] = '*'
         // commit(AUTH_SUCCESS, resp)

@@ -38,7 +38,7 @@ export default {
       this.$parent.SendService(id)
     },
     deleteService: function() {
-      console.log(this.id, "id dar inja")
+      // console.log(this.id, "id dar inja")
       let {id} = this
       this.$parent.deleteService(id)
     }
