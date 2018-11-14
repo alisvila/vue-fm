@@ -16,7 +16,7 @@
                         subtitle="">
         <tab-content title="اطلاعات عمومی"
                     icon="ti-user" 
-                    :before-change="validateFirstStep"
+                    :before-change="validateDemo"
                     >
                     
         <div class="row">
@@ -318,12 +318,12 @@ export default {
        },
        methods: {
            submitService: function() {
-               let {$router} = this
+            let {$router, formInput} = this;
+            let jsons;
             let admin = localStorage.getItem('admin-token')
             let number = this.$store.state.servicNo;
             // let admin = this.$store.state.admin;
             let userName = this.$store.state.userName;
-            const {formInput} = this
             let user =  JSON.parse(localStorage.getItem('user'))
             // console.log(JSON.parse(user.Description))
             let payload = [{
@@ -338,9 +338,15 @@ export default {
                                 "activityType": formInput.activityType,
                                 "sectedService": this.sectedService
             }]
-            let jsons = JSON.parse(user.Description).concat(JSON.stringify(payload))
+            if (user.Description == null || user.Description == "") {
+                jsons = payload
+                console.log("true", jsons)
+            }
+            else {
+                jsons = JSON.parse(user.Description).concat(payload)
+            }
             let desc = JSON.stringify(jsons)
-            // console.log(desc)
+            console.log(desc, "this is desc")
             this.axios({
                 method: 'put',
                 url: this.apiUrl + '/api/UserManagement', 

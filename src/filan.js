@@ -1,44 +1,3 @@
-<template>
-<div>
-<TopMenu />
-  <div class="container-fluid">
-    <SideMenu />
-    <div class="pannel-home">
-    <HeadText title="" subtitle=""/>
-    <div class="row">
-
-        <div class="col-lg-4 col-sm-12 col-md-6" v-for="(i, index) in services" :key="index">
-            <card :link="`/pannel/app/${index}`" status="در حال بررسی" :image="require('@/assets/feature.png')" :name="i.appName" :id="index"/>
-        </div>
-
-        <div class="col-lg-4 col-sm-12 col-md-6">
-            <card link="/pannel/new" status="افزودن برنامه جدید" :image="require('@/assets/finno-new.png')" name="جدید" isNew/>
-        </div>
-    </div>
-    <div class="row">
-              <div class="col-lg-4 col-sm-12 col-md-6">
-    </div>
-        </div>
-
-
-
-  </div>
-</div>
-
-  <div>
-    <b-modal ref="myModalRef" hide-footer title="Using Component Methods">
-      <div class="d-block text-center">
-        <h3>Hello From My Modal!</h3>
-      </div>
-      <b-btn class="mt-3" variant="outline-secendory" @click="hideModal">بله</b-btn>
-        <b-btn class="mt-3" variant="outline-success" @click="hideModal">خیر</b-btn>
-    </b-modal>
-  </div>
-
-</div>
-</template>
-
-<script>
 
 import HeadText from '@/components/HeadText.vue'
 import Apps from '@/views/pannel/Apps.vue'
@@ -108,23 +67,21 @@ export default {
             this.$refs.myModalRef.hide()
         },
         deleteService: function (id) {
-            let alert = confirm(`آیا از حذف سرویس ${this.services[id].appName} مطمعن هستید؟ `)
+            let alert = confirm(`آیا از حذف سرویس ${this.services[id][0].appName} مطمعن هستید؟ `)
             if (alert) {
                 console.log(id)
                 let newServ = this.services.splice(id, 1)
 
-                // let chert = new Array
-                // for (let i = 0; i < newServ.length; i++) {
-                //     chert.push(JSON.stringify(newServ[i]))
-                // }
-                // newServ = chert
+                let chert = new Array
+                for (let i = 0; i < newServ.length; i++) {
+                    chert.push(JSON.stringify(newServ[i]))
+                }
+                newServ = chert
                 let log = JSON.stringify(newServ)
-                console.log(log)
-                // this.updateUser(JSON.stringify(newServ))
+                this.updateUser(JSON.stringify(newServ))
 
             }
             else {
-                console.log(id)
                 console.log("no")
             }
             // this.$refs.myModalRef.show()
@@ -156,15 +113,15 @@ export default {
             let Id = this.$store.state.jwt.nameid
 
             let user = JSON.parse(localStorage.getItem('user'))
-            // let desc = JSON.parse(user.Description)
-            // let chert = new Array
+            let desc = JSON.parse(user.Description)
+            let chert = new Array
             // this.services = desc;
             // desc.splice(0,1)
-            // for (let i = 0; i < desc.length; i++) {
-            //     chert.push(JSON.parse(desc[i]))
-            // }
+            for (let i = 0; i < desc.length; i++) {
+                chert.push(JSON.parse(desc[i]))
+            }
 
-            this.services = JSON.parse(user.Description)
+            this.services = chert
         },
 
         getUser: function (id) {
@@ -190,37 +147,19 @@ export default {
     },
 
     beforeMount: function () {
-        this.getAdmin()
+        // this.getAdmin()
         let Id = JSON.parse(localStorage.getItem('jwt')).nameid
-        // api.getApiCall(Id)
-          this.getUser(Id)
+        api.getApiCall(Id)
+        //   this.getUser(Id)
     },
 
     mounted: function () {
-        this.getServices()
-        // let filan = api.apiCall()
+        console.log("fiasda asdaf")
+        //   this.getServices()
+        let filan = api.apiCall()
+        console.log(filan, "bargashtin index")
     },
     created: function () {
-        this.getAdmin()
+        // this.getAdmin()
     }
 }
-</script>
-
-<style>
-
-h1, h2, h3, p, span {
-  font-family: sabin
-}
-
-.pannel-home {
-    padding: 80px 225px 0 10px;
-    direction: rtl;
-    margin: 0;
-}
-
-@media screen and (max-width: 575px) {
-    .pannel-home {
-        padding: 80px 75px 0 10px;
-    }
-}
-</style>
