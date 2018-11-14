@@ -110,24 +110,14 @@ export default {
         deleteService: function (id) {
             let alert = confirm(`آیا از حذف سرویس ${this.services[id].appName} مطمعن هستید؟ `)
             if (alert) {
-                console.log(id)
-                let newServ = this.services.splice(id, 1)
+                this.services.splice(id, 1)
 
-                // let chert = new Array
-                // for (let i = 0; i < newServ.length; i++) {
-                //     chert.push(JSON.stringify(newServ[i]))
-                // }
-                // newServ = chert
-                let log = JSON.stringify(newServ)
-                console.log(log)
-                // this.updateUser(JSON.stringify(newServ))
+                this.updateUser(JSON.stringify(this.services))
 
             }
             else {
-                console.log(id)
                 console.log("no")
             }
-            // this.$refs.myModalRef.show()
 
         },
         getAdmin: function () {

@@ -58,7 +58,7 @@ export default {
 }
 
 .card img {
-  width: 75px;
+  height: 75px;
   margin: 4px;
 }
 
