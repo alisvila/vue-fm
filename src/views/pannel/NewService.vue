@@ -16,7 +16,7 @@
                         subtitle="">
         <tab-content title="اطلاعات عمومی"
                     icon="ti-user" 
-                    :before-change="validateDemo"
+                    :before-change="validateFirstStep"
                     >
                     
         <div class="row">
@@ -410,7 +410,7 @@ export default {
         validateDemo: function() {
             return true
         },
-        validateSecondStep() {
+        validateSecondStep: function() {
             // console.log(this.sectedService.length)
             if (this.sectedService != null && this.sectedService.length >= 1) {
                 this.alert = false;
@@ -423,7 +423,7 @@ export default {
                 return false
             }
         },
-         validateFirstStep() {
+         validateFirstStep: function() {
              let {formInput} = this
              if (
                 formInput.appName != null && formInput.appName.length > 4 &&

@@ -4,15 +4,27 @@
         <Menu />
 
         <div class="section">
-            <div class="">
-
                 <div class="middle-content">
                     <img class="logo" src="../assets/finnoboom.png">
                     <h1 class="sub-text">
                         تجلی ایده های پرداخت شما
                     </h1>
                 </div>
+            <div class="sub-logo">
+                <img src="../assets/logo.png">
             </div>
+        </div>
+
+
+        <div class="section">
+            <div class="section-title">
+                <h1>درباره فینوبوم</h1>
+            </div>
+                <div class="middle-content">
+                    <p class="sub-text">
+                        فینوبوم بستری از امکانات و فناوری های مالی د حوزه های متنوع پرداخت و بانک برای استارتاپ ها و کسب و کارهای کوچیک می باشد.
+                    </p> 
+                </div>
             <div class="sub-logo">
                 <img src="../assets/logo.png">
             </div>
@@ -22,9 +34,8 @@
             <div class="section-title">
                 <h1>همکاران تجاری</h1>
             </div>
+
             <div class="list-logo-customer">
-
-
                 <ul>
                     <li>
                         <a href="https://www.ba24.ir/" class="llc llc-item">
@@ -126,7 +137,7 @@ import { page } from 'vue-analytics'
         options: {
           menu: '#menu',
           anchors: ['page1', 'page2', 'page3'],
-          sectionsColor: ['#f9f9f9', '#00b7b9', '#ff983f'],
+          sectionsColor: ['#f9f9f9', '#00a9ea', '#00b7b9', '#ff983f'],
           anchors:['home', 'partners', 'services'],
         },
       }
@@ -145,12 +156,13 @@ import { page } from 'vue-analytics'
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 1065px;
+    /* width: 1065px; */
     margin: 0 auto;
     flex-direction: column;
 }
 .sub-text {
   margin-top: 30px;
+  direction: rtl;
 }
 
 .section-title {
@@ -167,7 +179,8 @@ import { page } from 'vue-analytics'
   width: 100px;
 }
 .logo {
-  width: 60%;
+    width: 60%;
+    max-width: 860px;
 }
 
 .card {
@@ -185,17 +198,17 @@ import { page } from 'vue-analytics'
 .icon-text {
       margin: 15px 0;
 }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-    a {
-        color: #42b983;
-    }
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    display: inline-block;
+    margin: 0 10px;
+}
+a {
+    color: #42b983;
+}
 .powered {
     background: white;
     color: grey;
@@ -213,5 +226,10 @@ import { page } from 'vue-analytics'
 .powered .sub-text {
   margin-top: 29px;
   margin-left: 5px;
+}
+@media screen and (max-width: 575px) {
+    .logo {
+        width: 90%;
+    }
 }
 </style>

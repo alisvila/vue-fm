@@ -29,7 +29,7 @@
 
                 <div class="checkbox mb-3">
                 </div>
-                <button class="btn btn-lg btn-finno btn-block" type="register">ثبت نام</button>
+                <button class="btn btn-lg btn-finno btn-block submit" type="register">ثبت نام</button>
             </form>
         </div>
     </div>
@@ -173,5 +173,9 @@ export default {
     margin: 0 auto;
     width: 445px;
     border-radius: 1px;
+}
+
+.submit {
+    color: white;
 }
 </style>
