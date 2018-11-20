@@ -67,30 +67,29 @@ export default {
         }
     },
     methods: {
-          getAdmin: function() {
-            this.axios({
-            method: 'post',
-            url: 'http://service.sirang.sabinarya.com/api/account/login', 
-            data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
-            headers: { 
-                "content-type": "application/x-www-form-urlencoded",
-                "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
-                'Accept': '*/*'
-                }
-            })
-            .then (function(response) {
-                let token = response.data.access_token
-                localStorage.setItem('admin-token', token)
-                // console.log(token)
+        //   getAdmin: function() {
+        //     this.axios({
+        //     method: 'post',
+        //     url: 'http://service.sirang.sabinarya.com/api/account/login', 
+        //     data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
+        //     headers: { 
+        //         "content-type": "application/x-www-form-urlencoded",
+        //         "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        //         "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
+        //         'Accept': '*/*'
+        //         }
+        //     })
+        //     .then (function(response) {
+        //         let token = response.data.access_token
+        //         localStorage.setItem('admin-token', token)
 
-            })
-            .catch( function(err) {
-                console.log(err)
+        //     })
+        //     .catch( function(err) {
+        //         console.log(err)
 
                 
-            })
-        },
+        //     })
+        // },
         register: function() {
             let {$router, alert, msg} = this
             // console.log(this.$store.state.admin)
@@ -101,7 +100,9 @@ export default {
             // console.log(this.jwtDec(token))
                 this.axios({
                 method: 'post',
-                url: this.apiUrl + '/api/UserManagement', 
+                // url: this.apiUrl + '/api/UserManagement', 
+                url: 'http://127.0.0.1:4000/api/register',
+
                 data: {
                     Name: this.fname + " " + this.lname,
                     username: this.mobile,
@@ -113,22 +114,18 @@ export default {
                     Description: "[]",
                 },
                 headers: { 
-                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                    "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
-                    'Accept': '*/*'
-                    }
+                },
                 })
                 .then (function(response) {
+                    console.log(response)
                     alert = false
-                    $router.push('/login/')
+                    // $router.push('/login/')
 
                     // this.$store.state.userId = response.Id
                     // console.log(response)
                 })
                 .catch( function(err) {
+                    console.log(err.response.data)
                     msg = err.response.data
                     alert = true
                 })
@@ -136,14 +133,14 @@ export default {
 
         }
     },
-              beforeMount: function() {
+            beforeMount: function() {
 
           },
 
           mounted: function() {
             },
          created: function() {
-                this.getAdmin()
+                // this.getAdmin()
          }
 };
 

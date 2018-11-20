@@ -320,7 +320,7 @@ export default {
            submitService: function() {
             let {$router, formInput} = this;
             let jsons;
-            let admin = localStorage.getItem('admin-token')
+            // let admin = localStorage.getItem('admin-token')
             let number = this.$store.state.servicNo;
             // let admin = this.$store.state.admin;
             let userName = this.$store.state.userName;
@@ -349,7 +349,8 @@ export default {
             console.log(desc, "this is desc")
             this.axios({
                 method: 'put',
-                url: this.apiUrl + '/api/UserManagement', 
+                // url: this.apiUrl + '/api/UserManagement', 
+                url: 'http://127.0.0.1:4000/api/addService/',
                 data: JSON.stringify({
                         "Id": localStorage.getItem('user-id'),
                         "Name": user.DisplayName,
@@ -363,7 +364,6 @@ export default {
                         "SendSMS": true
                 }),
                 headers: { 
-                    "Authorization": "bearer " + admin,
                     "Content-Type": "application/json",
                     "Access-Control-Allow-Origin": "*",
                     'Accept': '*/*'
@@ -378,16 +378,18 @@ export default {
                 console.log(err)
             })
            },
-           getUser: function(id) {
-                           let {getAdmin} = this
 
-            let admin = this.$store.state.admin;
+           getUser: function(id) {
+
+            let {getAdmin} = this
+
+            // let admin = this.$store.state.admin;
                
             this.axios({
                 method: 'get',
-                url: this.apiUrl + '/api/UserManagement/' + localStorage.getItem('user-id'),
+                // url: this.apiUrl + '/api/UserManagement/' + localStorage.getItem('user-id'),
+                url: 'http://127.0.0.1:4000/api/getUser/' + localStorage.getItem('user-id'),
                 headers: { 
-                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
                     "Content-Type": "application/json",
                     "Access-Control-Allow-Origin": "*",
                     'Accept': '*/*'
@@ -404,7 +406,7 @@ export default {
            },
         //  onComplete: this.submitService(),        
 
-            beforeTabSwitch: function(){
+        beforeTabSwitch: function(){
           return true;
         },
         validateDemo: function() {
@@ -461,37 +463,37 @@ export default {
              }
          },
          
-        getAdmin: function() {
-            let {admin} = this
-            this.axios({
-            method: 'post',
-            url: 'http://service.sirang.sabinarya.com/api/account/login', 
-            data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
-            headers: { 
-                "content-type": "application/x-www-form-urlencoded",
-                "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
-                'Accept': '*/*'
-                }
-            })
-            .then (function(response) {
-                let token = response.data.access_token
-                localStorage.setItem('admin-token', token)
+        // getAdmin: function() {
+        //     let {admin} = this
+        //     this.axios({
+        //     method: 'post',
+        //     url: 'http://service.sirang.sabinarya.com/api/account/login', 
+        //     data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
+        //     headers: { 
+        //         "content-type": "application/x-www-form-urlencoded",
+        //         "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        //         "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
+        //         'Accept': '*/*'
+        //         }
+        //     })
+        //     .then (function(response) {
+        //         let token = response.data.access_token
+        //         localStorage.setItem('admin-token', token)
                 // console.log(token)
                 // getUser(localStorage.getItem('user-id'))
 
-            })
-            .catch( function(err) {
-                console.log(err)
-            })
-        },
+        //     })
+        //     .catch( function(err) {
+        //         console.log(err)
+        //     })
+        // },
 
        },
        mounted() {
            this.getUser(localStorage.getItem('user-id'))
        },
        created() {
-           this.getAdmin()
+        //    this.getAdmin()
         }
 }
 

@@ -76,7 +76,8 @@ export default {
 
             this.axios({
                 method: 'put',
-                url: this.apiUrl + '/api/UserManagement',
+                // url: this.apiUrl + '/api/UserManagement',
+                url: 'http://127.0.0.1/api/updateUser',
                 data: JSON.stringify({
                     "Id": localStorage.getItem('user-id'),
                     "Name": user.DisplayName,
@@ -90,10 +91,7 @@ export default {
                     "SendSMS": true
                 }),
                 headers: {
-                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    'Accept': '*/*'
                 }
             })
                 .then(function (response) {
@@ -120,27 +118,27 @@ export default {
             }
 
         },
-        getAdmin: function () {
-            this.axios({
-                method: 'post',
-                url: 'http://service.sirang.sabinarya.com/api/account/login',
-                data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
-                headers: {
-                    "content-type": "application/x-www-form-urlencoded",
-                    "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                    "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method",
-                    'Accept': '*/*'
-                }
-            })
-                .then(function (response) {
-                    let token = response.data.access_token
-                    localStorage.setItem('admin-token', token)
+        // getAdmin: function () {
+        //     this.axios({
+        //         method: 'post',
+        //         url: 'http://service.sirang.sabinarya.com/api/account/login',
+        //         data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
+        //         headers: {
+        //             "content-type": "application/x-www-form-urlencoded",
+        //             "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        //             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method",
+        //             'Accept': '*/*'
+        //         }
+        //     })
+        //         .then(function (response) {
+        //             let token = response.data.access_token
+        //             localStorage.setItem('admin-token', token)
 
-                })
-                .catch(function (err) {
-                    console.log(err)
-                })
-        },
+        //         })
+        //         .catch(function (err) {
+        //             console.log(err)
+        //         })
+        // },
         getServices: function () {
 
             let Id = this.$store.state.jwt.nameid
@@ -159,28 +157,25 @@ export default {
 
         getUser: function (id) {
             let apiUrl = "http://service.sirang.sabinarya.com"
-
+               
             this.axios({
                 method: 'get',
                 url: apiUrl + '/api/UserManagement/' + id,
-                headers: {
-                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    'Accept': '*/*'
+                headers: { 
+                    "Content-Type": "application/json"
                 }
             })
-                .then(function (response) {
-                    localStorage.setItem('user', JSON.stringify(response.data))
-                })
-                .catch(function (err) {
-                    console.log(err)
-                })
-        },
+            .then (function(response) {
+                localStorage.setItem('user', JSON.stringify(response.data))
+            })
+            .catch( function(err) {
+                console.log(err)
+            })
+           },
     },
 
     beforeMount: function () {
-        this.getAdmin()
+        // this.getAdmin()
         let Id = JSON.parse(localStorage.getItem('jwt')).nameid
         // api.getApiCall(Id)
           this.getUser(Id)
@@ -191,7 +186,7 @@ export default {
         // let filan = api.apiCall()
     },
     created: function () {
-        this.getAdmin()
+        // this.getAdmin()
     }
 }
 </script>
