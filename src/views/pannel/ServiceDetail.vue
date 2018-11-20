@@ -169,28 +169,6 @@ export default {
             })
       },
 
-
-          getAdmin: function() {
-            this.axios({
-            method: 'post',
-            url: 'http://service.sirang.sabinarya.com/api/account/login', 
-            data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
-            headers: { 
-                "content-type": "application/x-www-form-urlencoded",
-                "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
-                'Accept': '*/*'
-                }
-            })
-            .then (function(response) {
-                let token = response.data.access_token
-                localStorage.setItem('admin-token', token)
-
-            })
-            .catch( function(err) {
-                console.log(err)
-            })
-        },
         getServices: function() {
 
         let Id = this.$store.state.jwt.nameid
@@ -232,7 +210,6 @@ export default {
           },
 
           beforeMount: function() {
-                // this.getAdmin()
               let Id = JSON.parse(localStorage.getItem('jwt')).nameid
               this.getUser(Id)
           },
@@ -241,7 +218,6 @@ export default {
               this.getServices()
             },
          created: function() {
-                this.getAdmin()
          }
 
 

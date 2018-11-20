@@ -380,14 +380,9 @@ export default {
            },
 
            getUser: function(id) {
-
-            let {getAdmin} = this
-
-            // let admin = this.$store.state.admin;
                
             this.axios({
                 method: 'get',
-                // url: this.apiUrl + '/api/UserManagement/' + localStorage.getItem('user-id'),
                 url: 'http://127.0.0.1:4000/api/getUser/' + localStorage.getItem('user-id'),
                 headers: { 
                     "Content-Type": "application/json",
@@ -400,7 +395,6 @@ export default {
                 // console.log(response.data)
             })
             .catch( function(err) {
-                // getAdmin()
                 console.log(err)
             })
            },
@@ -462,38 +456,13 @@ export default {
                  return false
              }
          },
-         
-        // getAdmin: function() {
-        //     let {admin} = this
-        //     this.axios({
-        //     method: 'post',
-        //     url: 'http://service.sirang.sabinarya.com/api/account/login', 
-        //     data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
-        //     headers: { 
-        //         "content-type": "application/x-www-form-urlencoded",
-        //         "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        //         "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
-        //         'Accept': '*/*'
-        //         }
-        //     })
-        //     .then (function(response) {
-        //         let token = response.data.access_token
-        //         localStorage.setItem('admin-token', token)
-                // console.log(token)
-                // getUser(localStorage.getItem('user-id'))
 
-        //     })
-        //     .catch( function(err) {
-        //         console.log(err)
-        //     })
-        // },
 
        },
        mounted() {
            this.getUser(localStorage.getItem('user-id'))
        },
        created() {
-        //    this.getAdmin()
         }
 }
 
