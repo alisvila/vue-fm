@@ -4,6 +4,7 @@ var token
 
 
 var adminApi = async function (data, method, url, callback) {
+    console.log(data)
     await getAdmin()
     return await axios({
         method: method,
@@ -22,6 +23,7 @@ var adminApi = async function (data, method, url, callback) {
             console.log(response)
         })
         .catch(function (err) {
+            console.log(err)
             callback(err.response.status, err.response.data)
         })
 }

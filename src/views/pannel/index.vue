@@ -135,18 +135,19 @@ export default {
             this.services = JSON.parse(user.Description)
         },
 
-        getUser: function (id) {
-            let apiUrl = "http://service.sirang.sabinarya.com"
+           getUser: function(id) {
                
             this.axios({
                 method: 'get',
-                url: apiUrl + '/api/UserManagement/' + id,
+                url: 'http://127.0.0.1:4000/api/getUser/' + localStorage.getItem('user-id'),
                 headers: { 
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    'Accept': '*/*'
                 }
             })
             .then (function(response) {
                 localStorage.setItem('user', JSON.stringify(response.data))
+                // console.log(response.data)
             })
             .catch( function(err) {
                 console.log(err)

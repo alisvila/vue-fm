@@ -30,7 +30,7 @@ export default {
     name: 'login',
     data() {
         return {
-        apiUrl: 'http://service.sirang.sabinarya.com/api',
+        apiUrl: 'http://test-service.sirang.sabinarya.com/api',
         alert: false,
         type: "",
         msg: "",

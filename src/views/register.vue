@@ -88,6 +88,7 @@ export default {
                 },
                 })
                 .then (function(response) {
+                    $router.push('/login')
                     console.log(response)
                     alert = false
 

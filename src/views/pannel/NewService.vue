@@ -365,7 +365,6 @@ export default {
                 }),
                 headers: { 
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
                     'Accept': '*/*'
                     }
             })
@@ -386,7 +385,6 @@ export default {
                 url: 'http://127.0.0.1:4000/api/getUser/' + localStorage.getItem('user-id'),
                 headers: { 
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
                     'Accept': '*/*'
                 }
             })

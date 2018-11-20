@@ -34,7 +34,7 @@ serviceRoter.route('/getUser/:id').get(async function(req, res) {
     var filan = await helper.adminApi(req.body, 'get', register_url, stat);
 })
 
-serviceRoter.route('/addService/').post(async function(req, res) {
+serviceRoter.route('/addService/').put(async function(req, res) {
     function stat(status, msg) {
         if(status == 200){
             res.status(200).json(msg)
@@ -43,10 +43,10 @@ serviceRoter.route('/addService/').post(async function(req, res) {
         console.log(status)
     }
     register_url = '/api/UserManagement/'
-    var filan = await helper.adminApi(req.body, 'post', register_url, stat);
+    var filan = await helper.adminApi(req.body, 'put', register_url, stat);
 })
 
-serviceRoter.route('/updateUser/').post(async function(req, res) {
+serviceRoter.route('/updateUser/').put(async function(req, res) {
     function stat(status, msg) {
         if(status == 200){
             res.status(200).json(msg)
@@ -55,6 +55,7 @@ serviceRoter.route('/updateUser/').post(async function(req, res) {
         console.log(status)
     }
     register_url = '/api/UserManagement/'
+    console.log(req.body)
     var filan = await helper.adminApi(req.body, 'put', register_url, stat);
 })
 

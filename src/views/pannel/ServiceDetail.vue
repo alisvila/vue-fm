@@ -141,7 +141,7 @@ export default {
 
             this.axios({
                 method: 'put',
-                url: this.apiUrl + '/api/UserManagement', 
+                url: 'http://127.0.0.1:4000/api/updateUser',
                 data: JSON.stringify({
                         "Id": localStorage.getItem('user-id'),
                         "Name": user.DisplayName,
@@ -155,9 +155,7 @@ export default {
                         "SendSMS": true
                 }),
                 headers: { 
-                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
                     'Accept': '*/*'
                     }
             })
@@ -178,36 +176,36 @@ export default {
         let chert = new Array
         // this.services = desc;
         // desc.splice(0,1)
-        for (let i=0; i < desc.length; i++) {
-            chert.push(JSON.parse(desc[i]))
-        }
+        // for (let i=0; i < desc.length; i++) {
+        //     chert.push(JSON.parse(desc[i]))
+        // }
     
-        this.services = chert
-        this.service = this.services[this.s][0]
+        // this.services = chert
+        console.log(this.s)
+        this.service = desc[this.s]
         this.updateForm()
           },
 
-          getUser: function(id) {
-            let apiUrl = "http://service.sirang.sabinarya.com"
+          getUser: function(id) {               
                
             this.axios({
                 method: 'get',
-                url: apiUrl + '/api/UserManagement/' + id,
+                url: 'http://127.0.0.1:4000/api/getUser/' + localStorage.getItem('user-id'),
                 headers: { 
-                    "Authorization": "bearer " + localStorage.getItem('admin-token'),
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
                     'Accept': '*/*'
                 }
             })
             .then (function(response) {
                 localStorage.setItem('user', JSON.stringify(response.data))
+                // console.log(response.data)
             })
             .catch( function(err) {
                 console.log(err)
             })
            },
-          },
+
+           },
 
           beforeMount: function() {
               let Id = JSON.parse(localStorage.getItem('jwt')).nameid
