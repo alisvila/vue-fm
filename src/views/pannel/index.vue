@@ -81,7 +81,7 @@ export default {
                 url: config.api + '/api/addService/',
                 data: JSON.stringify({
                     "Id": localStorage.getItem('user-id'),
-                    "Name": user.DisplayName,
+                    "Name": user.Name,
                     "Description": desc,
                     "Photo": null,
                     "UserName": user.UserName,
