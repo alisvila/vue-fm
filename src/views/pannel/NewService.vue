@@ -266,6 +266,7 @@ import SideMenu from '@/components/SideMenu.vue'
 import Alert from '@/components/alert.vue'
 import TopMenu from '@/components/TopMenu.vue'
 import allServices from '@/assets/services.json'
+import config from '@/config'
 
 
 export default {
@@ -350,7 +351,7 @@ export default {
             this.axios({
                 method: 'put',
                 // url: this.apiUrl + '/api/UserManagement', 
-                url: 'http://127.0.0.1:4000/api/addService/',
+                url: config.api + '/api/addService/',
                 data: JSON.stringify({
                         "Id": localStorage.getItem('user-id'),
                         "Name": user.DisplayName,
@@ -382,7 +383,7 @@ export default {
                
             this.axios({
                 method: 'get',
-                url: 'http://127.0.0.1:4000/api/getUser/' + localStorage.getItem('user-id'),
+                url: config.api + '/api/getUser/' + localStorage.getItem('user-id'),
                 headers: { 
                     "Content-Type": "application/json",
                     'Accept': '*/*'

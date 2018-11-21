@@ -41,7 +41,7 @@
 </template>
 <script>
 import Alert from '@/components/alert.vue'
-
+import config from '@/config'
 
 export default {
     name: 'login',
@@ -72,7 +72,7 @@ export default {
            
                 this.axios({
                 method: 'post',
-                url: 'http://127.0.0.1:4000/api/register',
+                url: config.api + '/api/register',
 
                 data: {
                     Name: this.fname + " " + this.lname,

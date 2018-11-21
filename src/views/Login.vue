@@ -25,6 +25,8 @@
 </template>
 <script>
 import VueJwtDecode from 'vue-jwt-decode'
+import config from '@/config'
+
 export default {
 
     name: 'login',
@@ -47,7 +49,7 @@ export default {
 
             this.axios({
                 method: 'post',
-                url: this.apiUrl + '/account/login', 
+                url: config.sirang + '/account/login', 
                 data: `grant_type=password&username=${username}&password=${password}&client_id=ngAuthApp`,
                 headers: { 
                     "content-type": "application/x-www-form-urlencoded",

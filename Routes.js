@@ -47,6 +47,7 @@ serviceRoter.route('/addService/').put(async function(req, res) {
 })
 
 serviceRoter.route('/updateUser/').put(async function(req, res) {
+    console.log("this is it")
     function stat(status, msg) {
         if(status == 200){
             res.status(200).json(msg)
