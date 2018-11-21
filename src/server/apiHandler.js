@@ -2,13 +2,32 @@ var axios = require('axios')
 var config = require('../../config')
 var token
 
+var login = async function (data, callback) {
+    var username = data.username;
+    var password = data.password;
+    return await axios({
+        method: 'post',
+        url: config.api + '/api/account/login',
+        data: `grant_type=password&username=${username}&password=${password}&client_id=ngAuthApp`,
+        headers: { 
+            "content-type": "application/x-www-form-urlencoded",
+            }
+    })
+        .then(function (response) {
+            callback(response.status, response.data)
+            console.log(response)
+        })
+        .catch(function (err) {
+            console.log(err)
+            callback(err.response.status, err.response.data)
+        })
+}
 
 var adminApi = async function (data, method, url, callback) {
-    console.log(data)
     await getAdmin()
     return await axios({
         method: method,
-        url: config.dev_api + url,
+        url: config.api + url,
         data: data,
         headers: {
             "Authorization": "bearer " + token,
@@ -18,7 +37,6 @@ var adminApi = async function (data, method, url, callback) {
         }
     })
         .then(function (response) {
-            // console.log("\n in register helper" + response)
             callback(response.status, response.data)
             console.log(response)
         })
@@ -28,10 +46,9 @@ var adminApi = async function (data, method, url, callback) {
         })
 }
 var getAdmin = async function () {
-    console.log("\n this is token \n")
     await axios({
         method: 'post',
-        url: config.dev_api + '/api/account/login',
+        url: config.api + '/api/account/login',
         data: `grant_type=password&username=filan&password=123456&client_id=ngAuthApp`,
         headers: {
             "content-type": "application/x-www-form-urlencoded",
@@ -52,4 +69,5 @@ var getAdmin = async function () {
 
 
 module.exports.adminApi = adminApi
+module.exports.login = login
 

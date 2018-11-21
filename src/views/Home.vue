@@ -26,7 +26,7 @@
                     </p> 
                 </div>
             <div class="sub-logo">
-                <img src="../assets/logo.png">
+
             </div>
         </div>
 
@@ -137,7 +137,7 @@ import { page } from 'vue-analytics'
         options: {
           menu: '#menu',
           anchors: ['page1', 'page2', 'page3'],
-          sectionsColor: ['#f9f9f9', '#00a9ea', '#00b7b9', '#ff983f'],
+          sectionsColor: ['#f9f9f9', '#00b7b9', '#0fa9c1fa', '#ff983f'],
           anchors:['home', 'partners', 'services'],
         },
       }
@@ -163,6 +163,11 @@ import { page } from 'vue-analytics'
 .sub-text {
   margin-top: 30px;
   direction: rtl;
+}
+
+.middle-content p {
+    color: white;
+    font-size: 18px;
 }
 
 .section-title {

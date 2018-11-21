@@ -47,7 +47,6 @@ serviceRoter.route('/addService/').put(async function(req, res) {
 })
 
 serviceRoter.route('/updateUser/').put(async function(req, res) {
-    console.log("this is it")
     function stat(status, msg) {
         if(status == 200){
             res.status(200).json(msg)
@@ -58,6 +57,19 @@ serviceRoter.route('/updateUser/').put(async function(req, res) {
     register_url = '/api/UserManagement/'
     console.log(req.body)
     var filan = await helper.adminApi(req.body, 'put', register_url, stat);
+})
+
+serviceRoter.route('/login/').post(async function(req, res) {
+    function stat(status, msg) {
+        if(status == 200){
+            res.status(200).json(msg)
+        }
+        res.status(status).json(msg)
+        console.log(status)
+    }
+    register_url = '/api/account/login'
+    console.log(req.body)
+    var filan = await helper.login(req.body, stat);
 })
 
 

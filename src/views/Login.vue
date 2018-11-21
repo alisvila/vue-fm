@@ -49,13 +49,10 @@ export default {
 
             this.axios({
                 method: 'post',
-                url: config.sirang + '/account/login', 
+                url: config.api + '/api/login', 
                 data: `grant_type=password&username=${username}&password=${password}&client_id=ngAuthApp`,
                 headers: { 
                     "content-type": "application/x-www-form-urlencoded",
-                    "Access-Control-Allow-Methods": 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                    "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method", 
-                    'Accept': '*/*'
                     }
             })
             .then (function(response) {
