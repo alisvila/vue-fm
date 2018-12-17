@@ -22,7 +22,7 @@
             </div>
                 <div class="middle-content">
                     <p class="sub-text">
-                        فینوبوم بستری از امکانات و فناوری های مالی د حوزه های متنوع پرداخت و بانک برای استارتاپ ها و کسب و کارهای کوچیک می باشد.
+                        فینوبوم بستری از امکانات و فناوری های مالی د حوزه های متنوع پرداخت و بانک برای استارتاپ ها و کسب و کارهای کوچک می باشد.
                     </p> 
                 </div>
             <div class="sub-logo">
@@ -36,7 +36,11 @@
             </div>
 
             <div class="list-logo-customer">
-                <ul>
+                    <div>
+                      <img  class="finno-center" src="../assets/finnotech.svg">
+                    </div>
+
+<!--                <ul>
                     <li>
                         <a href="https://www.ba24.ir/" class="llc llc-item">
                             <img src="http://finnotech.ir/wp-content/uploads/2018/08/bank_1.png" width="109" height="107"
@@ -73,7 +77,7 @@
 
                         </a>
                     </li>
-                </ul>
+               </ul>-->
 
 
             </div>
@@ -136,9 +140,8 @@ import { page } from 'vue-analytics'
       return {
         options: {
           menu: '#menu',
-          anchors: ['page1', 'page2', 'page3'],
           sectionsColor: ['#f9f9f9', '#00b7b9', '#0fa9c1fa', '#ff983f'],
-          anchors:['home', 'partners', 'services'],
+          anchors:['home', 'about', 'partners', 'services'],
         },
       }
     },
@@ -152,6 +155,12 @@ import { page } from 'vue-analytics'
 </script>
 
 <style scoped>
+.finno-center {
+    background: white;
+    padding: 5px;
+    border-radius: 0.25rem;
+}
+
 .middle-content {
     display: flex;
     justify-content: flex-start;

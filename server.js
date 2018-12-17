@@ -15,12 +15,11 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-const PORT = config.APP_PORT || 4000
+const PORT = config.APP_PORT
 
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-//   res.setHeader('Access-Control-Allow-Origin', 'https://finnoboom.com')
-  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:8080')
+   res.setHeader('Access-Control-Allow-Origin', 'https://finnoboom.com')
 
     // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')

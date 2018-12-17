@@ -11,6 +11,7 @@ var login = async function (data, callback) {
         data: `grant_type=password&username=${username}&password=${password}&client_id=ngAuthApp`,
         headers: { 
             "content-type": "application/x-www-form-urlencoded",
+            "Access-Control-Allow-Origin": "*"
             }
     })
         .then(function (response) {

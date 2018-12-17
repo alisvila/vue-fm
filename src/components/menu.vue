@@ -14,6 +14,10 @@
                         <a class="nav-link" href="#home">صفحه اصلی <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#about">درباره فینوبوم<span class="sr-only">(current)</span></a>
+                        <!-- <router-link to="/" class="nav-link">صدور قبض</router-link> -->
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#partners">همکاران تجاری<span class="sr-only">(current)</span></a>
                         <!-- <router-link to="/" class="nav-link">صدور قبض</router-link> -->
                     </li>
